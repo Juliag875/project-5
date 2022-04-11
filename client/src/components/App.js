@@ -3,10 +3,11 @@ import { Switch, Route } from "react-router-dom";
 import Home from './Home';
 import NavbarTop from './NavbarTop';
 import Navbar from './Navbar';
-// import Login from './Login';
+import Login from './Login';
 import ItemContainer from './ItemContainer';
 import ItemDetail from './ItemDetail';
 import '../App.css';
+
 
 function App() {
   // let { slug } = useParams();
@@ -27,9 +28,9 @@ function App() {
         <Route exact path="/items/:id">
           <ItemDetail />
         </Route>
-        {/* <Route exact path="/items/:id">
+        <Route exact path="/login">
           <Login />
-        </Route> */}
+        </Route>
         <Route path="*">
           <h1>404 not found</h1>
         </Route>

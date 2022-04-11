@@ -1,8 +1,21 @@
-import React from 'react'
+import React from 'react';
+import Login from './Login'
+// import Button from './Button'
 
-function Logout() {
+function Logout({customer, setCustomer}) {
+  function handleLogout() {
+    fetch("/logout", {
+      method: "DELETE" 
+    }).then((res) => {
+      if (res.ok) {
+        setCustomer(null)
+      }});
+    }
+
+    if (!customer) return <Login onLogin={setCustomer} />;
+
   return (
-    <div>Logout</div>
+    <button onClick={handleLogout}>Logout</button>
   )
 }
 

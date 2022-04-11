@@ -18,7 +18,7 @@ function ItemDetail() {
   }
   
  return (
-    <div onClick={handleToggle}>
+    <div>
         <h4>{item.brand}</h4>
         <h5>{item.title}</h5>
         <img 
@@ -29,9 +29,9 @@ function ItemDetail() {
         />
         <span>{item.rating}</span>  
         <p><span className="bold">From ${item.price1}-{item.price2}</span></p>
-        <p>
+        <p onClick={handleToggle}> Description
           {
-          !showDescription ? "Description" : item.description
+          !showDescription ? null : item.description
           }
         </p>
         <button >Add to Cart</button>
