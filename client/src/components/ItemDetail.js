@@ -29,7 +29,6 @@ function ItemDetail() {
         />
         <span>{item.rating}</span>  
         <p><span className="bold">From ${item.price1}-{item.price2}</span></p>
-        {/* <h4>Description </h4> */}
         <p>
           {
           !showDescription ? "Description" : item.description
