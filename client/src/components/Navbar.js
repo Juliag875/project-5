@@ -9,7 +9,8 @@ function Navbar() {
         </NavLink>
         <NavLink className="nav-li" exact to="/items">
           Collection
-        </NavLink>
+          </NavLink>
+        <NavLink className="nav-li" to="/about">About</NavLink>
     </div>
   )
 }

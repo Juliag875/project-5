@@ -2,13 +2,12 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 function Home() {
-  return (
-    <div>   
+  return (   
       <div className="spring-sale">
-        <h1>Spring Sale</h1>
-        <h2>-20%</h2>
-        <Link to={"/items"}> </Link>
-      </div>
+        <Link to={"/items"} style={{textDecoration:"none"}}>
+          <h1>Spring Sale</h1>
+          <h2>-20%</h2>  
+        </Link>  
     </div>
   )
 }

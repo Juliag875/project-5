@@ -6,8 +6,9 @@
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-h1 {
+.spring-sale h1, h2 {
   color: white;
+  text-decoration: none;
 }
 
 /* .cards-list {
@@ -63,15 +64,25 @@ h1 {
   flex-wrap: wrap;
 }
 
+.card {
+  margin: 1rem;
+  /* box-shadow: 4px 4px 6px rgba(74, 183, 255, 0.2); */
+  width: 300px;
+}
+
 .spring-sale {
-  background-color: pink;
+  /* background-color: pink; */
+  /* background: url("https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"); */
+  background-image: url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zmxvd2Vyc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60");
+  background-position: center;
+  position: relative;
   color: white;
   text-align: center;
   padding-top: 40px;
   margin-top: 10%;
   height: 30vh;
   width: 45%;
-  border-radius: 30px;
+  border-radius: 10px;
   text-decoration: none;
 }
 

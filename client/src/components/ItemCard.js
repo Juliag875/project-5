@@ -1,16 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { Link } from "react-router-dom";
 
 function ItemCard({item}) {
-  const { brand, title, image, price1, price2, rating} = item
+  const { id, brand, title, image, price1, price2, rating} = item
 
   return (
-      <div className="card">
-        <h2>{brand}</h2>
+    <div className="card">
+      <Link to={`/items/${id}`} style={{color:"black"}}>
+        <h3>{brand}</h3>
         <h4>{title}</h4>
+      </Link>
         <img src={image} alt={title} className="card-image" />
         <span>{rating}</span>  
         <p><span className="bold">From ${price1}-{price2}</span></p>
-      </div>
+    </div>
   
   )
 }

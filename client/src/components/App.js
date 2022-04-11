@@ -4,21 +4,32 @@ import Home from './Home';
 import NavbarTop from './NavbarTop';
 import Navbar from './Navbar';
 import ItemContainer from "./ItemContainer";
+import ItemDetail from "./ItemDetail"
+// import Cart from './Cart';
 import '../App.css';
 
 function App() {
+  // let { slug } = useParams();
+
   return (
     <div className="App">
       <NavbarTop />
-
       <Navbar/>
-      
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
+      {/* <Route exact path="/items">
+        <Cart />
+      </Route> */}
         <Route exact path="/items">
           <ItemContainer />
+        </Route>
+        <Route exact path="/items/:id">
+          <ItemDetail />
+        </Route>
+        <Route path="*">
+          <h1>404 not found</h1>
         </Route>
       </Switch>
     </div>
