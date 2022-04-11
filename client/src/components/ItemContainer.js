@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ItemCard from './ItemCard';
-import ItemDetail from "./ItemDetail";
 
 function ItemContainer() {
   const [items, setItems] = useState([])
