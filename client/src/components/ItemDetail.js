@@ -1,17 +1,30 @@
-import React from 'react';
-// import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 function ItemDetail() {
-  // const {title, image, description} = item
+  const [item, setItem] = useState([]);
+  const {id} = useParams()
+  
+  useEffect(() => {
+    fetch(`/items/${id}`)
+        .then(r => r.json())
+        .then(item =>setItem(item));
+      }, [id])
 
-  return (
-      <div>
-         <h2>This is the Product Detail component</h2> 
-          {/* <h2>{slug}</h2> */}
-          {/* <h3>Brand: {title}</h3>
-          <img src={image}  alt={title}/>
-          <p>{description}</p> */}
-      </div>
+  if (!item) return <h2>Loading...</h2> 
+
+  console.log(item)
+  
+return (
+    <div>
+        <h4>{item.brand}</h4>
+        <h5>{item.title}</h5>
+        <img src={item.image} alt={item.title} height="300px" className="card-image" />
+        <span>{item.rating}</span>  
+        <p><span className="bold">From ${item.price1}-{item.price2}</span></p>
+        <h4>Description: </h4>
+        <p>{item.description}</p>
+    </div>
   )
 }
 

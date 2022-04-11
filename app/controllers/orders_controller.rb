@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 
   def show
     order = find_order
-    order json: order, status: :ok
+    render json: order, status: :ok
   end
 
   private
