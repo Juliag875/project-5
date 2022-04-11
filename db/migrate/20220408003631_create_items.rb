@@ -8,6 +8,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.string :price2
       t.string :size1
       t.string :size2
+      t.integer :rating
       t.text :description
 
       t.timestamps

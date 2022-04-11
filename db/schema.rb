@@ -22,30 +22,10 @@ ActiveRecord::Schema.define(version: 2022_04_08_004144) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.string "location"
-    t.string "email"
-    t.string "phone"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.integer "phone"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "hosts", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "image"
-    t.text "description"
-    t.string "contact"
-    t.string "link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -58,6 +38,7 @@ ActiveRecord::Schema.define(version: 2022_04_08_004144) do
     t.string "price2"
     t.string "size1"
     t.string "size2"
+    t.integer "rating"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -70,19 +51,10 @@ ActiveRecord::Schema.define(version: 2022_04_08_004144) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "rentals", force: :cascade do |t|
-    t.integer "host_id"
-    t.integer "client_id"
-    t.boolean "available"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.integer "item_id"
     t.integer "customer_id"
     t.text "content"
-    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

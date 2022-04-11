@@ -1,4 +1,103 @@
-.App {
+* {
+  margin: auto;
+  padding: 0;
+  /* font-family: "Cinzel", serif; */
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1 {
+  color: white;
+}
+
+/* .cards-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+} */
+
+/* Top Nav */
+.navbar-top {
+  background-color: #bae0ff;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: -5px;
+  padding-bottom: 3px;
+  transition: 0.1s;
+}
+
+#top-a {
+  color:blue;
+  text-decoration: none;
+}
+
+#top-a:hover {
+  color: yellow;
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
+}
+
+/* Second Nav */
+.main-nav {
+  display: inline-block;
+}
+
+.nav-li {
+  display: inline-block;
+  margin: 0px 8px;
+  padding: 1px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: black;
+  font-weight: bold;
+  transition: 0.1s;
+}
+
+.cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.spring-sale {
+  background-color: pink;
+  color: white;
+  text-align: center;
+  padding-top: 40px;
+  margin-top: 10%;
+  height: 30vh;
+  width: 45%;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.card {
+  width: 175px;
+  font-size: 12px;
+  flex: 0 0 auto;         
+  display: flex;         
+  flex-direction: column;
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  border-radius: 9px;
+  margin-bottom: 9px;
+}
+
+
+
+
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +134,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
