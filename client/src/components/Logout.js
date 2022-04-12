@@ -1,22 +1,30 @@
 import React from 'react';
-import Login from './Login'
+import { Link } from "react-router-dom";
 // import Button from './Button'
 
-function Logout({customer, setCustomer}) {
+function Logout({customer, onLogout}) {
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE" 
-    }).then((res) => {
-      if (res.ok) {
-        setCustomer(null)
-      }});
-    }
-
-    if (!customer) return <Login onLogin={setCustomer} />;
+    }).then(() => onLogout());
+  }
+  // if (!customer) return <Login onLogin={setCustomer} />;
 
   return (
-    <button onClick={handleLogout}>Logout</button>
-  )
+    <>
+    <h2>
+      <Link to="/">Continue Shopping</Link>
+    </h2>
+    {customer ? (
+      <div>
+        <p>Welcome, {customer.username}!</p>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+    ) :(
+      <Link to="/login">Click Here to Login</Link>
+    )}
+    </>
+  );
 }
 
 export default Logout

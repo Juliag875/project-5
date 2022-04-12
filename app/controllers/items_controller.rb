@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :not_found
   
   def index
     render json: Item.all, status: :ok
@@ -10,14 +9,12 @@ class ItemsController < ApplicationController
     render json: item, status: :ok
   end
 
+  # PATCH /items/:id update
+
   private
 
   def find_item
     Item.find(params[:id])
-  end
-
-  def not_found
-    render json: {"error": "Address not found"}, status: :not_found
   end
 
 end

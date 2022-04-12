@@ -11,21 +11,25 @@ function Login({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username }),
-    })
-      .then((r) => r.json())
-      .then((user) => onLogin(user));
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((customer) => onLogin(customer));
+      }
+    });
   }
-
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <button type="submit">Login</button>
-    </form>
-  );
+    <h3>Login With Username</h3>
+    <input
+      placeholder="username"
+      type="text"
+      id="username"
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+    />
+    <button type="submit">Login</button>
+  </form>
+);
 }
 
 export default Login

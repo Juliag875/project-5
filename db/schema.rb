@@ -22,15 +22,6 @@ ActiveRecord::Schema.define(version: 2022_04_11_190240) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.string "location"
-    t.string "email"
-    t.string "phone"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -39,17 +30,6 @@ ActiveRecord::Schema.define(version: 2022_04_11_190240) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "password_digest"
     t.string "username"
-  end
-
-  create_table "hosts", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "image"
-    t.text "description"
-    t.string "contact"
-    t.string "link"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -69,14 +49,6 @@ ActiveRecord::Schema.define(version: 2022_04_11_190240) do
   create_table "orders", force: :cascade do |t|
     t.integer "item_id"
     t.integer "cart_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "rentals", force: :cascade do |t|
-    t.integer "host_id"
-    t.integer "client_id"
-    t.boolean "available"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

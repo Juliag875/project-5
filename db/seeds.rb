@@ -31,8 +31,6 @@ puts "🌱Seeding Carts...✅"
   )
 end
 
-
-
 puts "🌱Seeding Items...✅"
 i1 = Item.create(
   brand: "Dior",

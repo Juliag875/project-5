@@ -1,35 +1,37 @@
-import React, {useState,useEffect}  from 'react';
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import React, {useState, useEffect}  from 'react';
+// import styled from "styled-components";
+import { NavLink, Link } from "react-router-dom";
 import Login from './Login';
 import Logout from "./Logout";
 // import Button from "./Button";
 
 function Navbar() {
   const [customer, setCustomer] = useState(null)
-   
-  // Auto-login
+  
   useEffect(() => {
-    fetch("/me").then((res)=>{
+    fetch("/me").then((res)=> {
       if (res.ok) {
         res.json().then((customer) => setCustomer(customer))
       }});
   },[]);
 
-  if (!customer) return <Login onLogin={setCustomer} />;
+  // if (!customer) return <Login onLogin={setCustomer} />;
+  function handleLogin(customer) {
+    setCustomer(customer);
+  }
+
+  function handleLogout() {
+    setCustomer(null);
+  }
 
   return (
-    <Wrapper>
+    <div>
       <NavLink className="nav-li" exact to="/">uCare</NavLink>
       <NavLink className="nav-li" exact to="/items">Collection</NavLink>
-      <NavLink className="nav-li" to="/about">About</NavLink>
-      <NavLink className="nav-li" exact to="/items/:id">
-        <Login onLogin={setCustomer}/>
-      </NavLink>
-      <button>
-        <Logout customer={customer} setCustomer={setCustomer}/>
-      </button>
-    </Wrapper>
+      <NavLink className="nav-li" exact to="/about">About</NavLink>
+      <Link onLogin={handleLogin} exact to="/login">Login</Link>
+      <Link onLogout={handleLogout} exact to="/logout">Logout</Link>
+    </div>
   );
 }
 
@@ -40,11 +42,11 @@ function Navbar() {
 //   right: 8px;
 // `;
 
-const Wrapper = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-`;
+// const Wrapper = styled.header`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 8px;
+// `;
 
 export default Navbar

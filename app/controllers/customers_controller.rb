@@ -1,22 +1,36 @@
-class CustomersController < ApplicationController
-  skip_before_action :authorize, only: :create
+class CustomersController < ApplicationController 
+  before_action :authorize, only: [:index, :create]
 
+  # GET
   def index
-    render json: Review.all, status: :ok
+    render json: Customer.all, status: :ok
   end
 
-  #SignUp
+  # POST - signUp
   def create
     customer = Customer.create!(customer_params)
     session[:customer_id] = customer.id
     render json: customer, status: :created
   end
 
-  private
-  
-  def user_params
-    params.permit(:name, :email, :username, :password, :password_confirmation)
+  # GET /customers/:id
+  def show
+    customer = Customer.find_by(id: session[:customer_id])
+    if customer
+      render json: user
+    else
+      render json: { error: "Not authorized" }, status: :unauthorized
+    end
+   end
   end
 
+  private
+
+  def find_customer
+    Customer.find(params[:id])
+  end
   
-end
+  def customer_params
+    params.permit(:name, :email, :username, :password, :password_confirmation)
+  end
+  

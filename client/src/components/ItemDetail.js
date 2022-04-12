@@ -29,7 +29,7 @@ function ItemDetail() {
         />
         <span>{item.rating}</span>  
         <p><span className="bold">From ${item.price1}-{item.price2}</span></p>
-        <p onClick={handleToggle}> Description
+        <p onClick={handleToggle}> Show Description
           {
           !showDescription ? null : item.description
           }
