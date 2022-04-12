@@ -1,8 +1,6 @@
 import React, {useState, useEffect}  from 'react';
 // import styled from "styled-components";
 import { NavLink, Link } from "react-router-dom";
-import Login from './Login';
-import Logout from "./Logout";
 // import Button from "./Button";
 
 function Navbar() {
@@ -29,7 +27,7 @@ function Navbar() {
       <NavLink className="nav-li" exact to="/">uCare</NavLink>
       <NavLink className="nav-li" exact to="/items">Collection</NavLink>
       <NavLink className="nav-li" exact to="/about">About</NavLink>
-      <Link onLogin={handleLogin} exact to="/login">Login</Link>
+      <Link onLogin={handleLogin} customer={customer} exact to="/login">Login</Link>
       <Link onLogout={handleLogout} exact to="/logout">Logout</Link>
     </div>
   );

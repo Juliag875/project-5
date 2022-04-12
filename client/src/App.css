@@ -11,13 +11,6 @@
   text-decoration: none;
 }
 
-/* .cards-list {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 20px;
-  overflow-x: auto;
-} */
-
 /* Top Nav */
 .navbar-top {
   background-color: #bae0ff;
@@ -78,35 +71,37 @@
 /* Items Container */
 .cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   padding-top: 10px;
 }
 
-.card {
+ .card {
   margin: 1rem;
   /* box-shadow: 4px 4px 6px rgba(74, 183, 255, 0.2); */
   width: 300px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.card {
   width: 175px;
   font-size: 12px;
   flex: 0 0 auto;         
   display: flex;         
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
+  flex-wrap: wrap;
 }
 
 .card-image {
   width: 100%;
   border-radius: 9px;
   margin-bottom: 9px;
+}
+
+/* Search */
+.search-bar {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Card Details Styling */
@@ -118,6 +113,25 @@
   float: left;
   padding-left: 75px;
   padding-top: 10px;
+}
+
+/* Comment Form Style */
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  margin-top: 12px;
+  font-family: inherit;
+  font-size: 1em;
+  transition: all 0.2s;
+  width: 40%;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 2px solid;
 }
 
 

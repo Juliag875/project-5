@@ -11,8 +11,8 @@ function ItemCard({item}) {
         <h4>{title}</h4>
       </Link>
         <img src={image} alt={title} className="card-image" />
-        <span>{rating}</span>  
         <p><span className="bold">From ${price1}-{price2}</span></p>
+        <span>⭐({rating})</span>  
     </div>
   
   )

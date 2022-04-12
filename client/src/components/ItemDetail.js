@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import CommentForm from './CommentForm';
 
 function ItemDetail() {
   const [item, setItem] = useState([]);
@@ -41,6 +42,7 @@ function ItemDetail() {
         </div>
         <br></br> 
         <button >Add to Cart</button>
+        <CommentForm />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Search({searchItem, setSearchItem}) {
   return (
-    <div>
+    <div className="search-bar">
       <input
         type="text"
         placeholder="Search Product..."

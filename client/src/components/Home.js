@@ -5,7 +5,7 @@ function Home() {
   return (   
       <div className="spring-sale">
         <Link to={"/items"} style={{textDecoration:"none"}}>
-          <h1>Spring Sale</h1>
+          <h1>Because you Care <br></br>Spring Sale</h1>
           <h2>-20%</h2>  
         </Link>  
     </div>
