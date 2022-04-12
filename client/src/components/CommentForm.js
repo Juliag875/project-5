@@ -50,7 +50,7 @@ function CommentForm() {
         value={formData.name}
         placeholder="Name..."
         className="input-text"
-      />
+      /><br></br>
       <input
         type="text"
         name="title"
@@ -58,8 +58,9 @@ function CommentForm() {
         value={formData.title}
         placeholder="Title..."
         className="input-text"
-      />
-    <input
+      />  
+      <br></br>
+      <textarea
         type="text"
         name="comment"
         onChange={handleChange}
@@ -67,13 +68,8 @@ function CommentForm() {
         placeholder="Your comment..."
         className="input-text"
       />
-      <input 
-        style={{color:"blue"}}
-        type="submit"
-        name="submit"
-        value="Add Comment"
-        className="submit"
-      />
+      <br></br>
+      <button type="submit">Submit</button>
     </form>
   </div>
   )

@@ -5,6 +5,7 @@ import NavbarTop from './NavbarTop';
 import Navbar from './Navbar';
 import Login from './Login';
 import Logout from './Logout';
+import Signup from './Signup'
 import ItemContainer from './ItemContainer';
 import ItemDetail from './ItemDetail';
 import '../App.css';
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route exact path="/logout">
           <Logout />
+        </Route>
+        <Route exact path="/signup">
+          <Signup />
         </Route>
         <Route path="*">
           <h1>404 not found</h1>

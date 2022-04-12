@@ -5,13 +5,14 @@ import Search from './Search'
 function ItemContainer() {
   const [items, setItems] = useState([])
   const [searchItem, setSearchItem] = useState("")
-
+ 
   useEffect(() => {
     fetch("/items")
       .then((r) => r.json())
       .then(items=>setItems(items));
   }, []);
-  if (!items) return <h2>Loading...</h2> 
+  
+  if (!items) return <h2>Loading...</h2>
 
   const searchItems = items.filter((item) => {
     return item.title.toLowerCase().includes(searchItem.toLowerCase())

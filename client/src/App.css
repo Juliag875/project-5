@@ -11,7 +11,7 @@
   text-decoration: none;
 }
 
-/* Top Nav */
+/* Navbar top*/
 .navbar-top {
   background-color: #bae0ff;
   align-items: center;
@@ -52,7 +52,12 @@
   text-decoration: none;
 }
 
-/* Second Nav */
+/* Main Nav */
+.main-nav-container {
+  background-color: black;
+  height: 4vh;
+}
+
 .main-nav {
   display: inline-block;
 }
@@ -60,12 +65,12 @@
 .nav-li {
   display: inline-block;
   margin: 0px 8px;
-  padding: 1px;
+  padding-top: 3.5px;
   text-decoration: none;
-  font-size: 1.2em;
-  color: black;
+  font-size: 1em;
   font-weight: bold;
   transition: 0.1s;
+  color: white;
 }
 
 /* Items Container */
@@ -121,17 +126,28 @@
   justify-content: center;
 }
 
-input {
+input, textarea {
   margin-top: 12px;
   font-family: inherit;
   font-size: 1em;
   transition: all 0.2s;
-  width: 40%;
+  width: 70%;
 }
 
 input:focus {
   outline: none;
   border-bottom: 2px solid;
+}
+
+button {
+  color:white;
+  margin-top: 30px;
+  border-radius: 15px;
+  width: 20vh;
+  height: 30px;
+  border: none;
+  background-color: black;
+  cursor: grab;
 }
 
 

@@ -12,13 +12,14 @@ function ItemDetail() {
         .then(r => r.json())
         .then(item =>setItem(item));
       }, [id])
+
   if (!item) return <h2>Loading...</h2> 
   
   function handleToggle(){
     setShowDescription(showDescription=>!showDescription)
   }
-  
- return (
+
+  return (
     <div className="item-details">
         <h4>{item.brand}</h4>
         <h5>{item.title}</h5>

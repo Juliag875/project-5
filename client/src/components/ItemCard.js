@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function ItemCard({item}) {
   const { id, brand, title, image, price1, price2, rating} = item
-
+  
   return (
     <div className="card">
       <Link to={`/items/${id}`} style={{color:"black"}}>
