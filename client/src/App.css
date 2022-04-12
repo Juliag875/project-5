@@ -59,15 +59,21 @@
 }
 
 .cards {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding-top: 10px;
 }
 
 .card {
   margin: 1rem;
   /* box-shadow: 4px 4px 6px rgba(74, 183, 255, 0.2); */
   width: 300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .spring-sale {
@@ -99,6 +105,12 @@
   width: 100%;
   border-radius: 9px;
   margin-bottom: 9px;
+}
+
+.search-bar{
+  position: sticky;
+  margin-top: 10px;
+  color: red;
 }
 
 
