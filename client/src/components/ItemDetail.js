@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 function ItemDetail() {
   const [item, setItem] = useState([]);
-  const [showDescription, setShowDescription] = useState([]);
+  const [showDescription, setShowDescription] = useState(false);
   const {id} = useParams()
   
   useEffect(() => {
@@ -18,22 +18,28 @@ function ItemDetail() {
   }
   
  return (
-    <div>
+    <div className="item-details">
         <h4>{item.brand}</h4>
         <h5>{item.title}</h5>
         <img 
           src={item.image} 
           alt={item.title} 
           height="300px" 
-          className="card-image" 
-        />
-        <span>{item.rating}</span>  
+        /> 
+        <br></br>
         <p><span className="bold">From ${item.price1}-{item.price2}</span></p>
-        <p onClick={handleToggle}> Show Description
+        <br></br>
+        <p onClick={handleToggle}> <i>Show Description</i>
+        <br></br>
           {
           !showDescription ? null : item.description
           }
         </p>
+        <div>⭐⭐⭐⭐⭐
+          <br></br>
+          ({item.rating})
+        </div>
+        <br></br> 
         <button >Add to Cart</button>
     </div>
   )
