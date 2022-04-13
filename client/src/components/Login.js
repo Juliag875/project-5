@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
+import { Error } from "../styles";
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("")
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/signup", {
+    setIsLoading(true);
+    fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -15,6 +19,8 @@ function Login({ onLogin }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((customer) => onLogin(customer));
+      } else {
+        res.json().then(err => setErrors(err.errors));
       }
     });
   }
@@ -38,7 +44,12 @@ function Login({ onLogin }) {
       />
       <br></br>
       <br></br>
-    <button type="submit">Login</button>
+    <button type="submit">Login
+      {isLoading ? "Loading..." : "Login"}
+    </button>
+    {errors.map((err) => (
+          <Error key={err}>{err}</Error>
+        ))}
   </form>
 );
 }

@@ -17,16 +17,18 @@ Review.destroy_all
 puts "🌱Seeding Customers...✅"
 20.times do
   Customer.create(
-    name: Faker::Name.unique.name,
+    name: Faker::Name.first_name,
     email: Faker::Internet.email,
-    phone: Faker::PhoneNumber.cell_phone
+    phone: Faker::PhoneNumber.cell_phone,
+    password: "123"
   )
+  byebug
 end
 
 puts "🌱Seeding Carts...✅"
 10.times do
   Cart.create(
-    customer_id: Customer.all.sample.id,
+    customer_id: Customer.ids.sample,
     purchased: rand(0..1)
   )
 end
@@ -151,9 +153,11 @@ end
 reviews =["As soon as I smelled it, I knew I had to get it! It smells fresh and citrusy.", "I love this scent! I was going between a few different Chanel Chance scents, and loves the grapefruit in this one. cant wait to buy again once the first bottle runs out.","My number 1 sent I’m on my 3 bottle now it’s so beautiful not over powering sent it’s a must try if you haven’t", "this beauty is so soft and feminine, sweet and pretty, this is a go to everyday non offensive scent. I'm in love with this fragrance!", "Smells absolutely divine. this is a must buy fragrance", "I love it!", "Must have", "Absolutely THE best fragrance ever. I don't go a day without it."]
 puts "🌱Seeding Reviews...✅"
 20.times do
-  Review.create(
-    item_id: Item.all.sample.id,
-    customer_id: Customer.all.sample.id,
+   Review.create(
+    item_id: Item.ids.sample,
+    customer_id: Customer.ids.sample,
+    name: Faker::Name.first_name,
+    title: Faker::Marketing.buzzwords,
     content: reviews.sample,
   )
 end

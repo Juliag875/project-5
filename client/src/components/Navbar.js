@@ -29,7 +29,7 @@ function Navbar() {
       <NavLink className="nav-li" exact to="/">uCare</NavLink>
       <NavLink className="nav-li" exact to="/items">Collection</NavLink>
       <NavLink className="nav-li" exact to="/about">About</NavLink>
-      <Link onLogin={handleLogin} customer={customer} exact to="/login">Login</Link>
+      <Link className="nav-li" onLogin={handleLogin} customer={customer} exact to="/login">Login</Link>
       <Link onLogout={handleLogout} exact to="/logout">Logout</Link>
       <Link onLogout={handleLogin} customer={customer} exact to="/signup">Signup</Link>
 
