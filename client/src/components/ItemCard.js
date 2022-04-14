@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-function ItemCard({item, reviews}) {
+function ItemCard({item}) {
   const { id, brand, title, image, price1, price2, rating} = item
   
   return (
@@ -13,8 +13,7 @@ function ItemCard({item, reviews}) {
         <img src={image} alt={title} className="card-image" />
         <p><span className="bold">From ${price1}-{price2}</span></p>
         <span>⭐({rating})</span>
-    </div>
-  
+    </div> 
   )
 }
 

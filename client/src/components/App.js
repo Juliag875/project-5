@@ -8,6 +8,7 @@ import Logout from './Logout';
 import Signup from './Signup'
 import ItemContainer from './ItemContainer';
 import ItemDetail from './ItemDetail';
+import ReviewForm from "./ReviewForm";
 import '../App.css';
 
 
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route exact path="/items/:id">
           <ItemDetail />
+        </Route>
+        <Route exact path="/reviewform">
+          <ReviewForm />
         </Route>
         <Route exact path="/login">
           <Login />

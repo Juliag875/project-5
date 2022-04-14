@@ -1,6 +1,5 @@
 class CustomersController < ApplicationController 
   before_action :authorize, only: [:index, :create]
-  # wrap_parameters format: []
 
   # GET
   def index

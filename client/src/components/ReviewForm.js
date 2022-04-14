@@ -1,16 +1,11 @@
 import React, {useState} from 'react'
 
-function ReviewForm() {
-  const [reviews, setReviews] = useState([])
+function ReviewForm({onAddReview}) {
   const [formData, setFormData] = useState({
     name: "",
     title: "",
     content: "",
   });
-
-  function addReview(newReview){
-    setReviews([...reviews, newReview])
-  }
 
   function handleChange(event) {
     setFormData({
@@ -25,8 +20,8 @@ function ReviewForm() {
       name: formData.name,
       title: formData.title,
       content : formData.content,
-    };
-
+    }
+  
     fetch("/reviews",{
       method: "POST",
       headers: {
@@ -35,7 +30,7 @@ function ReviewForm() {
       body: JSON.stringify(newReview)
    })
     .then(res=>res.json())
-    .then(data => addReview(data))
+    .then(data => onAddReview(data))
       setFormData({ name: "", title: "", content: ""})
   }
 
@@ -61,7 +56,7 @@ function ReviewForm() {
       <br></br>
       <textarea
         type="text"
-        name="comment"
+        name="content"
         onChange={handleChange}
         value={formData.content}
         placeholder="Your comment..."

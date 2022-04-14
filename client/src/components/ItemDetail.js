@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewForm from './ReviewForm';
+import ReviewCard from './ReviewCard';
 
 function ItemDetail() {
   const [item, setItem] = useState([]);
@@ -9,24 +10,23 @@ function ItemDetail() {
   const [showReviews, setShowReviews] = useState(false);
   const [showForm, setShowForm] = useState(false)
   const {id} = useParams();
-  
+
   useEffect(() => {
     fetch(`/items/${id}`)
         .then(r => r.json())
         .then(item =>setItem(item));
       }, [id])
 
-  // if (!item) return <h2>Loading...</h2> 
-
   useEffect(() => {
-    fetch(`/reviews/${id}`)
-      .then((r) => r.json())
-      .then(review=>setReviews(review));
-  }, [id]);
+    fetch('/reviews')
+        .then((r) => r.json())
+        .then(reviews => setReviews(reviews));
+  }, []);
+  // if (!item) return <h2>Loading...</h2> 
+  function addReview(newReview){
+    setReviews([...reviews, newReview])
+  }
 
-  
-  // const {name, title} = reviews
-  
   function handleToggleDescription(){
     setShowDescription(showDescription=>!showDescription)
   }
@@ -68,11 +68,10 @@ function ItemDetail() {
         <div onClick={handleToggleReviews}>
         <button>Show Review</button><br></br> 
          {showReviews ? 
-          <p>
-            {reviews.name}<br></br> 
-            {reviews.title}<br></br>
-            {reviews.content}
-          </p>
+          <>
+          {reviews.map(review=>(
+            <ReviewCard key={review.id} review={review}/>))}
+          </>
           :
           null
         }
@@ -81,7 +80,7 @@ function ItemDetail() {
         <button >Add to Cart</button>
         <br></br>
         <button onClick={handleToggleShowForm} >Add Review</button>
-        {showForm ? <ReviewForm /> : null}
+        {showForm ? <ReviewForm onAddReview={addReview}/> : null}
         
     </div>
   )
