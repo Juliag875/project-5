@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController 
   before_action :authorize, only: [:index, :create]
+  # wrap_parameters format: []
 
   # GET
   def index
@@ -33,4 +34,5 @@ class CustomersController < ApplicationController
   def customer_params
     params.permit(:name, :email, :username, :password, :password_confirmation)
   end
+
   

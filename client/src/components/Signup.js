@@ -1,16 +1,16 @@
 import React, {useState}  from 'react';
-import { Error } from "../styles";
+// import { Error } from "../styles";
 
 function SignUp({onLogin}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setErrors([]);
+    // setErrors([]);
     setIsLoading(true);
     fetch("/signup", {
       method: "POST",
@@ -26,16 +26,21 @@ function SignUp({onLogin}) {
       setIsLoading(false);
       if (res.ok) {
         res.json().then((customer) => onLogin(customer));
-      } else {
-        res.json().then((err) => setErrors(err.errors));
-      }
-    });
-  }
+      }});
+    }
+
+  //     } else {
+  //       res.json().then((err) => setErrors(err.errors));
+  //     }
+  //   });
+  // }
 
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="username">Username:</label>
+      <br></br>
       <input
+        // placeholder="username"
         type="text"
         id="username"
         autoComplete="off"
@@ -43,7 +48,9 @@ function SignUp({onLogin}) {
         onChange={(e) => setUsername(e.target.value)}
       /><br></br>
       <label htmlFor="password">Password:</label>
+      <br></br>
       <input
+        // placeholder="password"
         type="password"
         id="password"
         value={password}
@@ -51,18 +58,21 @@ function SignUp({onLogin}) {
       />
       <br></br>
       <label htmlFor="password_confirmation">Confirm Password:</label>
+      <br></br>
       <input
+        // placeholder="password confirmation"
         type="password"
         id="password_confirmation"
         value={passwordConfirmation}
         onChange={(e) => setPasswordConfirmation(e.target.value)}
       />
-      <button type="submit">Submit
-        {isLoading ? "Loading..." : "Sign Up"}
+      <br></br>
+      <button type="submit">
+        {isLoading ? "Sign Up" : "Loading..."}
       </button>
-      {errors.map((err) => (
+      {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
-        ))}
+        ))} */}
     </form>
   );
 }

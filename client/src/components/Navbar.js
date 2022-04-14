@@ -1,27 +1,27 @@
 import React, {useState, useEffect}  from 'react';
 // import styled from "styled-components";
 import { NavLink, Link } from "react-router-dom";
-// import Login from './Login'
 // import Button from "./Button";
 
 function Navbar() {
-  const [customer, setCustomer] = useState(null)
+  const [currentCustomer, setCurrentCustomer] = useState(null)
   
   useEffect(() => {
-    fetch("/me").then((res)=> {
+    fetch("/me")
+    .then(res => {
       if (res.ok) {
-        res.json().then((customer) => setCustomer(customer))
+        res.json().then((customer) => setCurrentCustomer(customer))
       }});
   },[]);
 
-  // if (!customer) return <Login onLogin={setCustomer} />;
+  // if (!currentCustomer) return <Login setCurrentCustomer={setCurrentCustomer} />;
 
-  function handleLogin(customer) {
-    setCustomer(customer);
+  function handleLogin(currentCustomer) {
+    setCurrentCustomer(currentCustomer);
   }
 
   function handleLogout() {
-    setCustomer(null);
+    setCurrentCustomer(null);
   }
 
   return (
@@ -29,9 +29,9 @@ function Navbar() {
       <NavLink className="nav-li" exact to="/">uCare</NavLink>
       <NavLink className="nav-li" exact to="/items">Collection</NavLink>
       <NavLink className="nav-li" exact to="/about">About</NavLink>
-      <Link className="nav-li" onLogin={handleLogin} customer={customer} exact to="/login">Login</Link>
-      <Link onLogout={handleLogout} exact to="/logout">Logout</Link>
-      <Link onLogout={handleLogin} customer={customer} exact to="/signup">Signup</Link>
+      <Link className="nav-li" currentCustomer={currentCustomer} onLogin={handleLogin} exact to="/login">Login</Link>
+      <Link className="nav-li" onLogout={handleLogout} exact to="/logout">Logout</Link>
+      <Link className="nav-li" onLogin={handleLogin} exact to="/signup">Signup</Link>
 
     </div>
   );

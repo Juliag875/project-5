@@ -1,15 +1,15 @@
 import React, {useState} from 'react'
 
-function CommentForm() {
-  const [comments, setComments] = useState([])
+function ReviewForm() {
+  const [reviews, setReviews] = useState([])
   const [formData, setFormData] = useState({
     name: "",
     title: "",
-    comment: "",
+    content: "",
   });
 
-  function addComment(newComment){
-    setComments([...comments, newComment])
+  function addReview(newReview){
+    setReviews([...reviews, newReview])
   }
 
   function handleChange(event) {
@@ -21,23 +21,22 @@ function CommentForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const newComment = {
+    const newReview = {
       name: formData.name,
       title: formData.title,
-      comment : formData.comment,
+      content : formData.content,
     };
 
-
-    fetch("/comments",{
+    fetch("/reviews",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newComment)
+      body: JSON.stringify(newReview)
    })
-    .then(r=>r.json())
-    .then(data => addComment(data))
-      setFormData({ name: "", title: "", comment: ""})
+    .then(res=>res.json())
+    .then(data => addReview(data))
+      setFormData({ name: "", title: "", content: ""})
   }
 
   return (
@@ -64,7 +63,7 @@ function CommentForm() {
         type="text"
         name="comment"
         onChange={handleChange}
-        value={formData.comment}
+        value={formData.content}
         placeholder="Your comment..."
         className="input-text"
       />
@@ -75,4 +74,4 @@ function CommentForm() {
   )
 }
 
-export default CommentForm
+export default ReviewForm

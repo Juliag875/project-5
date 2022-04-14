@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import { Error } from "../styles";
+// import { Error } from "../styles";
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,11 +19,12 @@ function Login({ onLogin }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((customer) => onLogin(customer));
-      } else {
-        res.json().then(err => setErrors(err.errors));
-      }
-    });
-  }
+      }});
+    }
+      // } else {
+      //   res.json().then(err => setErrors(err.errors));
+      // }
+    
   return (
     <form onSubmit={handleSubmit}>
     <h3>Login With Username</h3>
@@ -44,12 +45,12 @@ function Login({ onLogin }) {
       />
       <br></br>
       <br></br>
-    <button type="submit">Login
-      {isLoading ? "Loading..." : "Login"}
+    <button type="submit">
+      {isLoading ? "Login" : "Loading..."}
     </button>
-    {errors.map((err) => (
+    {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
-        ))}
+        ))} */}
   </form>
 );
 }

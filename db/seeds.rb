@@ -8,28 +8,27 @@
 require 'faker'
 
 Customer.destroy_all
-Cart.destroy_all
 Item.destroy_all
 Order.destroy_all
 Review.destroy_all
 
 
 puts "🌱Seeding Customers...✅"
+Customer.create(
+  name: "julia",
+  email: "j@gmail.com",
+  phone: Faker::PhoneNumber.cell_phone,
+  username: "julia_g",
+  password: "pass123"
+)
+
 20.times do
-  Customer.create(
+  c1 = Customer.create(
     name: Faker::Name.first_name,
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.cell_phone,
-    password: "123"
-  )
-  byebug
-end
-
-puts "🌱Seeding Carts...✅"
-10.times do
-  Cart.create(
-    customer_id: Customer.ids.sample,
-    purchased: rand(0..1)
+    username: Faker::FunnyName.name,
+    password: "pass123"
   )
 end
 
@@ -146,7 +145,8 @@ puts "🌱Seeding Orders...✅"
 10.times do
   Order.create(
     item_id: Item.ids.sample,
-    cart_id: Cart.ids.sample
+    customer_id: Customer.ids.sample,
+    purchased: rand(0..1)
   )
 end
 

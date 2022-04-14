@@ -9,8 +9,9 @@ class ApplicationController < ActionController::API
   private
 
   def authorize
-    @current_customer = Customer.find_by(id: session[:customer_id])
-    render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_customer
+    # @current_customer = Customer.find_by(id: session[:customer_id])
+    render json: { errors: ["Not authorized"] }, status: :unauthorized 
+    unless session.include? :customer_id
   end
 
   def not_found(exception)
@@ -24,3 +25,4 @@ class ApplicationController < ActionController::API
   end
 
   end
+end

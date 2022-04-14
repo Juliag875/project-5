@@ -11,9 +11,9 @@ function ItemContainer() {
       .then((r) => r.json())
       .then(items=>setItems(items));
   }, []);
-  
-  if (!items) return <h2>Loading...</h2>
 
+  if (!items) return <h2>Loading...</h2>
+  
   const searchItems = items.filter((item) => {
     return item.title.toLowerCase().includes(searchItem.toLowerCase())
     || item.brand.toLowerCase().includes(searchItem.toLowerCase());
@@ -29,7 +29,7 @@ function ItemContainer() {
     {searchItems.map((item) => (  
       <ItemCard 
         key={item.id}
-        item={item}  
+        item={item}
       />
     ))}
     </div>
