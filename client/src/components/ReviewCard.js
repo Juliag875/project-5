@@ -2,17 +2,29 @@ import React from 'react';
 // import { useParams } from 'react-router-dom';
 
 function ReviewCard({review, onDeleteReview}) {
+  const {id, name, title, content} = review
   
-  // const {id} = useParams
-  function handleDelete(id) {
+  function handleDelete() {
     fetch(`/reviews/${id}`, {
-      method: "DELETE",
+      method: "DELETE"
     })
-    .then((r) => r.json())
+    // .then((r) => r.json())
     .then(()=>onDeleteReview(id))
   }
 
-  const {name, title, content} = review
+//   function handleReviewChangeSubmit(e) {
+//     e.preventDefault();
+//     fetch (`reviews/${id}`, {
+//       method: "PATCH",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({review : updatedReview})
+//   })
+//       .then(r=>r.json())
+//       .then(updatedReview => onUpdateReview(updatedReview))
+//  }
+
   return (
     <div>
      <h5>Name: {name}</h5>

@@ -9,7 +9,7 @@ function ItemDetail() {
   const [showDescription, setShowDescription] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(22);
   const [isPending, setIsPending] = useState(false);
   const {id} = useParams();
 
@@ -35,14 +35,22 @@ function ItemDetail() {
   }
 
   function showMoreReviews(){
-    setIndex(index => (index + 3) % reviews.length)
+    setIndex(index => (index + 5) % reviews.length)
   }
 
   function handleDeleteReview(deletedReviewId) {
     const deletedReview = reviews.filter(review => 
       review.id !== deletedReviewId)
-      setReviews(deletedReview)
+      setReviews(deletedReview);
   }
+
+  // function handleUpdateReview(updatedReview){
+  //   const updatedReviews = reviews.map(review => {
+  //     if(review.id === updatedReview.id) return updatedReview;
+  //     return review;
+  //   })
+  //   setReviews(updatedReviews);
+  // }
 
   function handleToggleDescription(){
     setShowDescription(showDescription=>!showDescription)
@@ -83,24 +91,27 @@ function ItemDetail() {
         </div>
         <br></br> 
         <div onClick={handleToggleReviews}>
-        <button onClick={showReviewsButton}>Show Review</button><br></br> 
-         {showReviews ? 
-          <>
-          {reviews.slice(index, index + 3).map(review=>(
+        <button onClick={showReviewsButton}>Review</button><br></br> 
+         {/* {showReviews ? 
+          <> */}
+          {/* .slice(index, index + 3) */}
+          {reviews.map(review=>(
             <ReviewCard 
               key={review.id} 
               review={review} 
-              onDeleteReview={handleDeleteReview}/>))}
-          </>
+              onDeleteReview={handleDeleteReview}
+              // onUpdateReview={handleUpdateReview}
+              />))}
+          {/* </>
           :
-          null
-        } 
+          null */}
+        
       </div>
         {!isPending && <button onClick={showMoreReviews}><small>Show More Reviews</small></button>}
         <br></br>
         <button >Add to Cart</button>
         <br></br>
-        <button onClick={handleToggleShowForm} >Add Review</button>
+        <button onClick={handleToggleShowForm}>Add Review</button>
         {showForm ? <ReviewForm onAddReview={addReview}/> : null}    
     </div>
   )
