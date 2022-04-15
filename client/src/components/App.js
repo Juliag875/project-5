@@ -5,7 +5,8 @@ import NavbarTop from './NavbarTop';
 import Navbar from './Navbar';
 import Login from './Login';
 import Logout from './Logout';
-import Signup from './Signup'
+import Signup from './Signup';
+import Cart from "./Cart";
 import ItemContainer from './ItemContainer';
 import ItemDetail from './ItemDetail';
 import ReviewForm from "./ReviewForm";
@@ -41,6 +42,9 @@ function App() {
         </Route>
         <Route exact path="/signup">
           <Signup />
+        </Route>
+        <Route exact path="/cart">
+          <Cart />
         </Route>
         <Route path="*">
           <h1>404 not found</h1>

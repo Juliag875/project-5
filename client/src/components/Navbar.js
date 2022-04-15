@@ -28,7 +28,7 @@ function Navbar() {
     <div className="main-nav-container">
       <NavLink className="nav-li" exact to="/">uCare</NavLink>
       <NavLink className="nav-li" exact to="/items">Collection</NavLink>
-      <NavLink className="nav-li" exact to="/about">About</NavLink>
+      <NavLink className="nav-li" exact to="/cart">Cart</NavLink>
       <Link className="nav-li" currentCustomer={currentCustomer} onLogin={handleLogin} exact to="/login">Login</Link>
       <Link className="nav-li" onLogout={handleLogout} exact to="/logout">Logout</Link>
       <Link className="nav-li" onLogin={handleLogin} exact to="/signup">Signup</Link>
