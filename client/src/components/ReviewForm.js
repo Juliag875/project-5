@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 function ReviewForm({onAddReview}) {
-  const [isPending, setIsPending] = useState(false)
+  const [toggle, setToggle] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     title: "",
@@ -35,7 +35,10 @@ function ReviewForm({onAddReview}) {
     .then(res=>res.json())
     .then(data => onAddReview(data))
       setFormData({ name: "", title: "", content: ""});
-      setIsPending(false);
+  }
+
+  function handleToggle(){
+    setToggle(toggle=>!toggle)
   }
 
   return (
@@ -67,8 +70,10 @@ function ReviewForm({onAddReview}) {
         className="input-text"
       />
       <br></br>
-      {!isPending && <button type="submit">Submit</button>}
-      {isPending && <button disabled >Adding review</button>}
+      {!toggle ? <button onClick={handleToggle} type="submit">Submit</button>
+       :
+       <button>Review added</button>
+    }
     </form>
   </div>
   )

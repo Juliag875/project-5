@@ -115,8 +115,8 @@
 }
 
 .item-details img {
-  float: left;
-  padding-left: 75px;
+  /* float: left; */
+  /* padding-left: 75px; */
   padding-top: 10px;
 }
 

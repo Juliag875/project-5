@@ -10,7 +10,7 @@ function ItemDetail() {
   const [showReviews, setShowReviews] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [index, setIndex] = useState(22);
-  const [isPending, setIsPending] = useState(false);
+  // const [isPending, setIsPending] = useState(false);
   const {id} = useParams();
 
   useEffect(() => {
@@ -23,25 +23,27 @@ function ItemDetail() {
     fetch('/reviews')
         .then((r) => r.json())
         .then(reviews => setReviews(reviews));
-         setIsPending(false);
   }, []);
   // if (!item) return <h2>Loading...</h2> 
+
+  // CRUD functions
   function addReview(newReview){
     setReviews([...reviews, newReview])
-  }
-
-  function showReviewsButton () {
-    setIndex(Math.floor(Math.random() * reviews.length));
-  }
-
-  function showMoreReviews(){
-    setIndex(index => (index + 5) % reviews.length)
   }
 
   function handleDeleteReview(deletedReviewId) {
     const deletedReview = reviews.filter(review => 
       review.id !== deletedReviewId)
       setReviews(deletedReview);
+  }
+
+  // Display functions
+  function showReviewsButton () {
+    setIndex(Math.floor(Math.random() * reviews.length));
+  }
+
+  function showMoreReviews(){
+    setIndex(index => (index + 5) % reviews.length)
   }
 
   // function handleUpdateReview(updatedReview){
@@ -52,6 +54,7 @@ function ItemDetail() {
   //   setReviews(updatedReviews);
   // }
 
+  // Toggle Functions
   function handleToggleDescription(){
     setShowDescription(showDescription=>!showDescription)
   }
@@ -107,7 +110,7 @@ function ItemDetail() {
           null */}
         
       </div>
-        {!isPending && <button onClick={showMoreReviews}><small>Show More Reviews</small></button>}
+        <button onClick={showMoreReviews}><small>Show More Reviews</small></button>
         <br></br>
         <button >Add to Cart</button>
         <br></br>
