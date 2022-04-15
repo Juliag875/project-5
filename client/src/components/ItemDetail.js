@@ -8,8 +8,9 @@ function ItemDetail() {
   const [reviews, setReviews] = useState([])
   const [showDescription, setShowDescription] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
-  const [showForm, setShowForm] = useState(false)
-  const [index, setIndex] = useState(20)
+  const [showForm, setShowForm] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [isPending, setIsPending] = useState(false);
   const {id} = useParams();
 
   useEffect(() => {
@@ -22,10 +23,19 @@ function ItemDetail() {
     fetch('/reviews')
         .then((r) => r.json())
         .then(reviews => setReviews(reviews));
+         setIsPending(false);
   }, []);
   // if (!item) return <h2>Loading...</h2> 
   function addReview(newReview){
     setReviews([...reviews, newReview])
+  }
+
+  function showReviewsButton () {
+    setIndex(Math.floor(Math.random() * reviews.length));
+  }
+
+  function showMoreReviews(){
+    setIndex(index => (index + 3) % reviews.length)
   }
 
   function handleDeleteReview(deletedReviewId) {
@@ -65,7 +75,7 @@ function ItemDetail() {
           <small> show less</small>} */}
         <br></br>
           {
-          !showDescription ? null : item.description
+           !showDescription ? null : item.description
           }
         <div>⭐⭐⭐⭐⭐
           <br></br>
@@ -73,25 +83,25 @@ function ItemDetail() {
         </div>
         <br></br> 
         <div onClick={handleToggleReviews}>
-        <button>Show Review</button><br></br> 
+        <button onClick={showReviewsButton}>Show Review</button><br></br> 
          {showReviews ? 
           <>
-          {reviews.slice(index, index + 5).map(review=>(
+          {reviews.slice(index, index + 3).map(review=>(
             <ReviewCard 
               key={review.id} 
               review={review} 
-              setIndex={setIndex}
               onDeleteReview={handleDeleteReview}/>))}
           </>
           :
           null
         } 
       </div>
+        {!isPending && <button onClick={showMoreReviews}><small>Show More Reviews</small></button>}
+        <br></br>
         <button >Add to Cart</button>
         <br></br>
         <button onClick={handleToggleShowForm} >Add Review</button>
-        {showForm ? <ReviewForm onAddReview={addReview}/> : null}
-        
+        {showForm ? <ReviewForm onAddReview={addReview}/> : null}    
     </div>
   )
 }

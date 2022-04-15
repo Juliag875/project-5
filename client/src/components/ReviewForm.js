@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
-import { useParams } from 'react-router-dom';
 
 function ReviewForm({onAddReview}) {
+  const [isPending, setIsPending] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     title: "",
     content: ""
   });
 
-  const {id} = useParams
   function handleChange(event) {
     setFormData({
       ...formData,
@@ -22,8 +21,8 @@ function ReviewForm({onAddReview}) {
       name: formData.name,
       title: formData.title,
       content : formData.content,
-      item_id: 1,
-      customer_id: 1
+      item_id: 2,
+      customer_id: 2
     }
   
     fetch('/reviews',{
@@ -35,7 +34,8 @@ function ReviewForm({onAddReview}) {
    })
     .then(res=>res.json())
     .then(data => onAddReview(data))
-      setFormData({ name: "", title: "", content: ""})
+      setFormData({ name: "", title: "", content: ""});
+      setIsPending(false);
   }
 
   return (
@@ -67,7 +67,8 @@ function ReviewForm({onAddReview}) {
         className="input-text"
       />
       <br></br>
-      <button type="submit">Submit</button>
+      {!isPending && <button type="submit">Submit</button>}
+      {isPending && <button disabled >Adding review</button>}
     </form>
   </div>
   )
