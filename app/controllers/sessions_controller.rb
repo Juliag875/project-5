@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, only: :create
+  # skip_before_action :authorize, only: :create
 
-  def new
-  end
   def create
     # customer = User.find_by(username: params[:username])
     # session[:customer_id] = customer.id
@@ -12,9 +10,9 @@ class SessionsController < ApplicationController
       session[:customer_id] = customer.id
       rnder json: customer, status: :created
     else
-      # render json: { errors: ["Invalid username or password"] }, status: :unauthorized
-      flash.now[:alert] = "Username or password is invalid"
-      render "new"
+      render json: { errors: ["Invalid username or password"] }, status: :unauthorized
+      # flash.now[:alert] = "Username or password is invalid"
+      # render "new"
     end
   end
 

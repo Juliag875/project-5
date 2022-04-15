@@ -1,12 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { useParams } from 'react-router-dom';
 
 function ReviewForm({onAddReview}) {
   const [formData, setFormData] = useState({
     name: "",
     title: "",
-    content: "",
+    content: ""
   });
 
+  const {id} = useParams
   function handleChange(event) {
     setFormData({
       ...formData,
@@ -20,9 +22,11 @@ function ReviewForm({onAddReview}) {
       name: formData.name,
       title: formData.title,
       content : formData.content,
+      item_id: 1,
+      customer_id: 1
     }
   
-    fetch("/reviews",{
+    fetch('/reviews',{
       method: "POST",
       headers: {
         "Content-Type": "application/json",

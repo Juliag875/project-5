@@ -9,6 +9,7 @@ function ItemDetail() {
   const [showDescription, setShowDescription] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
   const [showForm, setShowForm] = useState(false)
+  const [index, setIndex] = useState(20)
   const {id} = useParams();
 
   useEffect(() => {
@@ -25,6 +26,12 @@ function ItemDetail() {
   // if (!item) return <h2>Loading...</h2> 
   function addReview(newReview){
     setReviews([...reviews, newReview])
+  }
+
+  function handleDeleteReview(deletedReviewId) {
+    const deletedReview = reviews.filter(review => 
+      review.id !== deletedReviewId)
+      setReviews(deletedReview)
   }
 
   function handleToggleDescription(){
@@ -69,13 +76,16 @@ function ItemDetail() {
         <button>Show Review</button><br></br> 
          {showReviews ? 
           <>
-          {reviews.map(review=>(
-            <ReviewCard key={review.id} review={review}/>))}
+          {reviews.slice(index, index + 5).map(review=>(
+            <ReviewCard 
+              key={review.id} 
+              review={review} 
+              setIndex={setIndex}
+              onDeleteReview={handleDeleteReview}/>))}
           </>
           :
           null
-        }
-        
+        } 
       </div>
         <button >Add to Cart</button>
         <br></br>

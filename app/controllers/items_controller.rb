@@ -9,12 +9,23 @@ class ItemsController < ApplicationController
     render json: item, status: :ok
   end
 
+  def create
+    # byebug 
+    item = Item.create!(item_params)
+    render json: item, status: :created
+  end
+
+
   # PATCH /items/:id update
 
   private
 
   def find_item
     Item.find(params[:id])
+  end
+
+  def item_params
+    params.permit(:brand, :title)
   end
 
 end
