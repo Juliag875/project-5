@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import ReviewForm from './ReviewForm';
 import ReviewCard from './ReviewCard';
 
@@ -26,6 +27,9 @@ function ItemDetail() {
         .then(reviews => setReviews(reviews));
   }, []);
   // if (!item) return <h2>Loading...</h2> 
+// const addToCart = id => {
+//   let tempCart = [...]
+// }
 
   //  Review CRUD functions
   function addReview(newReview){
@@ -111,7 +115,7 @@ function ItemDetail() {
       </div>
         <button onClick={showMoreReviews}><small>Show More Reviews</small></button>
         <br></br>
-        <button >Add to Cart</button>
+        <Link exact to="/order"> <button>Add to Cart</button> </Link>
         <br></br>
         <button onClick={handleToggleShowForm}>Add Review</button>
         {showForm ? 

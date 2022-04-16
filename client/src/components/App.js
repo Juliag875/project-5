@@ -6,7 +6,7 @@ import Navbar from './Navbar';
 import Login from './Login';
 import Logout from './Logout';
 import Signup from './Signup';
-import Cart from "./Cart";
+import Order from "./Order";
 import ItemContainer from './ItemContainer';
 import ItemDetail from './ItemDetail';
 import ReviewForm from "./ReviewForm";
@@ -14,7 +14,7 @@ import '../App.css';
 
 
 function App() {
-  // let { slug } = useParams();
+  
   
   return (
     <div className="App">
@@ -43,8 +43,8 @@ function App() {
         <Route exact path="/signup">
           <Signup />
         </Route>
-        <Route exact path="/cart">
-          <Cart />
+        <Route exact path="/order">
+          <Order />
         </Route>
         <Route path="*">
           <h1>404 not found</h1>

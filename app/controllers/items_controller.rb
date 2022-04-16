@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  wrap_parameters format: []
   
   def index
     render json: Item.all, status: :ok
@@ -15,6 +16,11 @@ class ItemsController < ApplicationController
     render json: item, status: :created
   end
 
+  def destroy
+    item = find_item
+    item.destroy
+    head :no_content
+  end
 
   # PATCH /items/:id update
 
@@ -25,7 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.permit(:brand, :title)
+    params.permit(:brand, :title, :image, :price1, :price2, :size1, :size2, :rating, :description)
   end
 
 end
