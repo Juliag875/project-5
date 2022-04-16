@@ -9,14 +9,15 @@ function ItemDetail() {
   const [showDescription, setShowDescription] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [index, setIndex] = useState(22);
+  const [num, setNum] = useState(22);
+  const [score, setScore] = ([]);
   // const [isPending, setIsPending] = useState(false);
   const {id} = useParams();
 
   useEffect(() => {
     fetch(`/items/${id}`)
         .then(r => r.json())
-        .then(item =>setItem(item));
+        .then(item =>setItem(item))
       }, [id])
 
   useEffect(() => {
@@ -26,7 +27,7 @@ function ItemDetail() {
   }, []);
   // if (!item) return <h2>Loading...</h2> 
 
-  // CRUD functions
+  //  Review CRUD functions
   function addReview(newReview){
     setReviews([...reviews, newReview])
   }
@@ -37,22 +38,14 @@ function ItemDetail() {
       setReviews(deletedReview);
   }
 
-  // Display functions
+  // Display Reviews
   function showReviewsButton () {
-    setIndex(Math.floor(Math.random() * reviews.length));
+    setNum(Math.floor(Math.random() * reviews.length));
   }
 
   function showMoreReviews(){
-    setIndex(index => (index + 5) % reviews.length)
+    setNum(num => (num + 5) % reviews.length)
   }
-
-  // function handleUpdateReview(updatedReview){
-  //   const updatedReviews = reviews.map(review => {
-  //     if(review.id === updatedReview.id) return updatedReview;
-  //     return review;
-  //   })
-  //   setReviews(updatedReviews);
-  // }
 
   // Toggle Functions
   function handleToggleDescription(){
@@ -65,6 +58,12 @@ function ItemDetail() {
 
   function handleToggleShowForm(){
     setShowForm(showForm=>!showForm)
+  }
+
+  // set score const 
+  const setScoreCount = (score, e) => {
+    e.preventDefault()
+    setScore({...reviews, score})
   }
 
   return (
@@ -97,8 +96,8 @@ function ItemDetail() {
         <button onClick={showReviewsButton}>Review</button><br></br> 
          {/* {showReviews ? 
           <> */}
-          {/* .slice(index, index + 3) */}
-          {reviews.map(review=>(
+           
+          {reviews.slice(num, num + 3).map(review=>(
             <ReviewCard 
               key={review.id} 
               review={review} 
@@ -115,9 +114,22 @@ function ItemDetail() {
         <button >Add to Cart</button>
         <br></br>
         <button onClick={handleToggleShowForm}>Add Review</button>
-        {showForm ? <ReviewForm onAddReview={addReview}/> : null}    
+        {showForm ? 
+         <ReviewForm 
+          onAddReview={addReview} 
+          onSetScore={setScoreCount}
+          /> 
+        : null}    
     </div>
   )
 }
 
 export default ItemDetail
+
+// function handleUpdateReview(updatedReview){
+  //   const updatedReviews = reviews.map(review => {
+  //     if(review.id === updatedReview.id) return updatedReview;
+  //     return review;
+  //   })
+  //   setReviews(updatedReviews);
+  // }
