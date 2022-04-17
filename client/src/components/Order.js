@@ -15,6 +15,12 @@ function Order() {
     setCartItems([...cartItems, newItem])
   }
 
+  function handleDeleteItemOrder(deletedItemOrderId) {
+    const deletedItemOrder = orders.filter(order => 
+      order.id !== deletedItemOrderId)
+      setOrders(deletedItemOrder);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const myOrder = {
@@ -31,7 +37,7 @@ function Order() {
       body: JSON.stringify(myOrder)
    })
     .then(res=>res.json())
-    .then(data => console.log(data));
+    .then(data => addItem(data));
   }
 
 
@@ -40,9 +46,11 @@ function Order() {
     {orders.map(order => (
       <OrderCard 
         key={order.id}
-        order={order}/>
+        order={order}
+        handleDeleteItemOrder={handleDeleteItemOrder}
+      />
     ))}
-    <button onClick={handleSubmit}>Checkout</button>
+    <button onClick={handleDeleteItemOrder}>Checkout</button>
     <div className="fa fa-shopping-cart" ariaHidden="true"></div>
     </div>
   )

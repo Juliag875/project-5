@@ -1,6 +1,6 @@
 import React from 'react'
 
-function OrderCard({order}) {
+function OrderCard({order, handleDeleteItemOrder}) {
   const {id} = order
 
   function handleDelete() {
@@ -8,7 +8,7 @@ function OrderCard({order}) {
       method: "DELETE"
     })
     // .then((r) => r.json())
-    .then(()=>console.log(id))
+    .then(()=>handleDeleteItemOrder(id))
   }
 
   return (
