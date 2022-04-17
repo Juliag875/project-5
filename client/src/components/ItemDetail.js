@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import { Link } from "react-router-dom";
+import Popup from 'reactjs-popup';
 import ReviewForm from './ReviewForm';
 import ReviewCard from './ReviewCard';
 
-function ItemDetail() {
+function ItemDetail({itemId, customerId}) {
   const [item, setItem] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -37,6 +37,7 @@ function ItemDetail() {
   function addItem(newItem) {
     setOrders([...orders, newItem])
   }
+
   function handleSubmit(e) {
     e.preventDefault();
     const myOrder = {
@@ -108,12 +109,17 @@ function ItemDetail() {
         <br></br>
         <p><span className="bold">From ${item.price1}-{item.price2}</span></p>
         <br></br>
-        <button onClick={handleToggleDescription}> Description </button>
-        {/* {!showDescription ? 
-          <small> show more</small>
-          :
-          <small> show less</small>} */}
-        <br></br>
+        <Popup
+          trigger={<button onClick={handleToggleDescription}> Description </button>}
+          position="bottom center"
+          nested
+         >
+          {close => (
+            <div className="modal">
+              <button className="close" onClick={close}>
+                &times;
+              </button>
+          <br></br>
           {
            !showDescription ? null : item.description
           }
@@ -149,7 +155,10 @@ function ItemDetail() {
           onAddReview={addReview} 
           onSetScore={setScoreCount}
           /> 
-        : null}    
+        : null} 
+        </div>
+        )}
+        </Popup>   
     </div>
   )
 }

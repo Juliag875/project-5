@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-// import { Error } from "../styles";
+import {useHistory} from 'react-router-dom';
 
-function Login({ onLogin }) {
+function Login({ setCurrentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,8 +19,9 @@ function Login({ onLogin }) {
       body: JSON.stringify({ username, password }),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((customer) => onLogin(customer));
+        res.json().then((user) => setCurrentUser(user));
       }});
+      history.push(`/`)
     }
       // } else {
       //   res.json().then(err => setErrors(err.errors));

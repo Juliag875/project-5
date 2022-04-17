@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import OrderCard from './OrderCard';
 
 function Order() {
@@ -49,8 +50,10 @@ function Order() {
         handleDeleteItemOrder={handleDeleteItemOrder}
       />
     ))}
-    <button onClick={handleDeleteItemOrder}>Checkout</button>
-    <div className="fa fa-shopping-cart" ariaHidden="true"></div>
+    <Link exact to="/checkout">
+      <button>Checkout</button>
+    </Link>
+    {/* <div className="fa fa-shopping-cart" ariaHidden="true"></div> */}
     </div>
   )
 }
