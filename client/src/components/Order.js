@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import OrderCard from './OrderCard';
 
 function Order() {
-  const [cartItems, setCartItems] = useState([]);
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
@@ -11,9 +10,9 @@ function Order() {
       .then(order=>setOrders(order));
   }, []);
 
-  function addItem(newItem){
-    setCartItems([...cartItems, newItem])
-  }
+  // function addItem(newItem){
+  //   setCartItems([...cartItems, newItem])
+  // }
 
   function handleDeleteItemOrder(deletedItemOrderId) {
     const deletedItemOrder = orders.filter(order => 
@@ -21,24 +20,24 @@ function Order() {
       setOrders(deletedItemOrder);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const myOrder = {
-      item_id: 1,
-      customer_id: 1,
-      purchased: true
-    }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   const myOrder = {
+  //     item_id: 1,
+  //     customer_id: 1,
+  //     purchased: true
+  //   }
   
-    fetch('/orders',{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(myOrder)
-   })
-    .then(res=>res.json())
-    .then(data => addItem(data));
-  }
+  //   fetch('/orders',{
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(myOrder)
+  //  })
+  //   .then(res=>res.json())
+  //   .then(data => addItem(data));
+  // }
 
 
   return (

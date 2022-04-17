@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import ReviewForm from './ReviewForm';
 import ReviewCard from './ReviewCard';
 
 function ItemDetail() {
   const [item, setItem] = useState([]);
-  const [reviews, setReviews] = useState([])
+  const [reviews, setReviews] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [showDescription, setShowDescription] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -26,10 +27,35 @@ function ItemDetail() {
         .then((r) => r.json())
         .then(reviews => setReviews(reviews));
   }, []);
-  // if (!item) return <h2>Loading...</h2> 
-// const addToCart = id => {
-//   let tempCart = [...]
-// }
+
+  useEffect(() => {
+    fetch("/orders")
+      .then((r) => r.json())
+      .then(order=>setOrders(order));
+  }, []);
+
+  function addItem(newItem) {
+    setOrders([...orders, newItem])
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const myOrder = {
+      item_id: 1,
+      customer_id: 1,
+      purchased: true
+    }
+  
+    fetch('/orders',{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(myOrder)
+   })
+    .then(res=>res.json())
+    .then(data => addItem(data));
+  }
+
 
   //  Review CRUD functions
   function addReview(newReview){
@@ -115,7 +141,7 @@ function ItemDetail() {
       </div>
         <button onClick={showMoreReviews}><small>Show More Reviews</small></button>
         <br></br>
-        <Link exact to="/order"> <button>Add to Cart</button> </Link>
+        <button onClick={handleSubmit}>Add to Cart</button>
         <br></br>
         <button onClick={handleToggleShowForm}>Add Review</button>
         {showForm ? 
