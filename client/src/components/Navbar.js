@@ -1,7 +1,6 @@
 import React, {useState, useEffect}  from 'react';
 // import styled from "styled-components";
 import { NavLink, Link } from "react-router-dom";
-// import Button from "./Button";
 
 function Navbar() {
   const [currentCustomer, setCurrentCustomer] = useState(null)
@@ -20,9 +19,9 @@ function Navbar() {
     setCurrentCustomer(currentCustomer);
   }
 
-  function handleLogout() {
-    setCurrentCustomer(null);
-  }
+  // function handleLogout() {
+  //   setCurrentCustomer(null);
+  // }
 
   return (
     <div className="main-nav-container">

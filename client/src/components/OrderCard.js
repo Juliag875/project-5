@@ -1,14 +1,13 @@
 import React from 'react'
 
-function OrderCard({order, handleDeleteItemOrder}) {
+function OrderCard({order, onDeleteItem}) {
   const {id} = order
 
   function handleDelete() {
     fetch(`/orders/${id}`, {
       method: "DELETE"
     })
-    // .then((r) => r.json())
-    .then(()=>handleDeleteItemOrder(id))
+    .then(() => onDeleteItem(id))
   }
 
   return (

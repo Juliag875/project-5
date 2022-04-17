@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from './Home';
 import NavbarTop from './NavbarTop';
@@ -10,11 +10,41 @@ import Order from "./Order";
 import ItemContainer from './ItemContainer';
 import ItemDetail from './ItemDetail';
 import ReviewForm from "./ReviewForm";
+import Search from './Search';
+// import ItemCard from './ItemCard';
+// import Order from './Order';
 import '../App.css';
 
 
 function App() {
+  const [items, setItems] = useState([]);
+  const [reviews, setReviews] = useState([])
+  const [searchItem, setSearchItem] = useState("");
+  const [cartItems, setCartItems] = useState([]);
   
+  // Fetch Items
+  useEffect(() => {
+    fetch("/items")
+      .then((r) => r.json())
+      .then(items=>setItems(items));
+  }, []);
+
+  const searchItems = items.filter((item) => {
+    return item.title.toLowerCase().includes(searchItem.toLowerCase())
+    || item.brand.toLowerCase().includes(searchItem.toLowerCase());
+  });
+
+  // Add item to cart
+  // function addToCart(product){
+  //   const exist = cartItems.find(item => item.id === product.id);
+  //   if (exist) {
+  //     setCartItems(cartItems.map(item => 
+  //       item.id ===product.id ? {...exist, quantity: exist.quantity + 1} : item
+  //       ))
+  //     } else {
+  //       setCartItems([...cartItems, {...product, quantity: 1}]);
+  //     }
+  // };
   
   return (
     <div className="App">
@@ -26,7 +56,13 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/items">
-          <ItemContainer />
+          <ItemContainer 
+            items={searchItems}
+            reviews={reviews}
+            searchItem={searchItem} 
+            setSearchItem={setSearchItem}
+
+          />
         </Route>
         <Route exact path="/items/:id">
           <ItemDetail />

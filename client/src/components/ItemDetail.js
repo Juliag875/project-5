@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import ReviewForm from './ReviewForm';
 import ReviewCard from './ReviewCard';
+import OrderCard from './OrderCard'
 
 function ItemDetail() {
   const [item, setItem] = useState([]);
-  const [reviews, setReviews] = useState([])
+  const [reviews, setReviews] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [showDescription, setShowDescription] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [num, setNum] = useState(22);
   const [score, setScore] = ([]);
+  
   // const [isPending, setIsPending] = useState(false);
   const {id} = useParams();
 
@@ -26,10 +29,43 @@ function ItemDetail() {
         .then((r) => r.json())
         .then(reviews => setReviews(reviews));
   }, []);
-  // if (!item) return <h2>Loading...</h2> 
-// const addToCart = id => {
-//   let tempCart = [...]
-// }
+  
+  Items AddToCart / RemoveFromCart
+  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    fetch("/orders")
+      .then((r) => r.json())
+      .then(order=>setOrders(order));
+  }, []);
+
+  function addItem(newItem){
+    setOrders([...orders, newItem])
+  }
+
+  function handleDeleteItemOrder(deleteOrderItemId) {
+    const deletedOrderItem = orders.filter(order => 
+      order.id !== deleteOrderItemId)
+      setReviews(deletedOrderItem);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const myOrder = {
+      item_id: 1,
+      customer_id: 1,
+      purchased: true
+    }
+  
+    fetch('/orders',{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(myOrder)
+   })
+    .then(res=>res.json())
+    .then(data => addItem(data));
+  }
 
   //  Review CRUD functions
   function addReview(newReview){
@@ -113,10 +149,22 @@ function ItemDetail() {
           null */}
         
       </div>
+
         <button onClick={showMoreReviews}><small>Show More Reviews</small></button>
         <br></br>
-        <Link exact to="/order"> <button>Add to Cart</button> </Link>
+   
+        <button onClick={handleSubmit}>Add to Cart</button> 
+        <div className="cards">
+          {orders.map(order => ( 
+            <OrderCard 
+              key={order.id}
+              order={order}
+              onDeleteItem={handleDeleteItemOrder}
+          />    
+        ))}
+         </div>
         <br></br>
+
         <button onClick={handleToggleShowForm}>Add Review</button>
         {showForm ? 
          <ReviewForm 
@@ -130,10 +178,3 @@ function ItemDetail() {
 
 export default ItemDetail
 
-// function handleUpdateReview(updatedReview){
-  //   const updatedReviews = reviews.map(review => {
-  //     if(review.id === updatedReview.id) return updatedReview;
-  //     return review;
-  //   })
-  //   setReviews(updatedReviews);
-  // }
