@@ -3,7 +3,7 @@
   padding: 0;
   /* font-family: "Cinzel", serif; */
   text-align: center;
-  font-family: Arial;
+  font-family: "Edwardian Script";
 }
 
 /* 'Source Sans Pro', sans-serif, "Roboto", "system-ui", "San Francisco", "Segoe UI", "Oxygen", "Ubuntu", Arial,  */
@@ -67,7 +67,7 @@
   /* position: relative; */
   text-align: center;
   padding-top: 40px;
-  margin-top: 20%;
+  margin-top: 10%;
   height: 50vmin;
   width: 45%;
   border-radius: 10px;
@@ -78,13 +78,15 @@
 .spring-sale h1, h2 {
   color: black;
   text-decoration: none;
-  text-shadow: 1px 1px 0px white;
+  text-shadow: 1px 1px 1px white;
+  font-style: oblique;
 }
 
 .set-sale h1, h2 {
   color: black;
   text-decoration: none;
   text-shadow: 1px 1px 0px white;
+  font-style: oblique;
 }
 
 .set-sale {
@@ -94,7 +96,16 @@
   float:right;
   border-radius: 10px;
   padding-top: 40px;
-  margin-top: 20%;
+  margin-top: 10%;
+}
+
+/* Logo quote style */
+.logo {
+  text-indent: 37%;
+  letter-spacing: 1px;
+  margin-top: 10%;
+  font-family: "Edwardian Script";
+  font-style: oblique;
 }
 
 /* Items Container */
@@ -172,6 +183,13 @@ button {
   border: none;
   background-color: black;
   cursor: grab;
+}
+
+/* Order Style */
+.order-image {
+  width: 10vmin;
+  height: 10vmin;
+  list-style-type: decimal;
 }
 
 .modal {

@@ -18,6 +18,7 @@ function App() {
   const [customers, setCustomers] = useState([]);
   const [searchItem, setSearchItem] = useState("");
   const [currentUser, setCurrentUser] = useState({});
+  const [cartItems, setCartItems] = useState([]);
   
   // Stay LoggedIn
   useEffect(() => {
@@ -33,6 +34,12 @@ function App() {
       .then(items=>setItems(items));
   }, []);
 
+  useEffect(() => {
+    fetch("/orders")
+      .then((r) => r.json())
+      .then(items=>setCartItems(items));
+  }, []);
+
   const searchItems = items.filter((item) => {
     return item.title.toLowerCase().includes(searchItem.toLowerCase())
     || item.brand.toLowerCase().includes(searchItem.toLowerCase());
@@ -44,19 +51,18 @@ function App() {
       .then(customers=>setCustomers(customers));
   }, []);
 
-  // const getItemId = items.map( i=> key={i.id} id={id})
 
   // Add item to cart
-  // function addToCart(product){
-  //   const exist = cartItems.find(item => item.id === product.id);
-  //   if (exist) {
-  //     setCartItems(cartItems.map(item => 
-  //       item.id ===product.id ? {...exist, quantity: exist.quantity + 1} : item
-  //       ))
-  //     } else {
-  //       setCartItems([...cartItems, {...product, quantity: 1}]);
-  //     }
-  // };
+  const onAdd = (product) => {
+    const exist = cartItems.find(item => item.id === product.id);
+    if (exist) {
+      setCartItems(cartItems.map(item => 
+        item.id === product.id ? {...exist, qty: exist.qty + 1} : item
+        ));
+      } else {
+        setCartItems([...cartItems, {...product, qty: 1}]);
+      }
+  };
 
   return (
     <div className="App">
@@ -72,13 +78,11 @@ function App() {
             items={searchItems}
             searchItem={searchItem} 
             setSearchItem={setSearchItem}
+            onAdd={onAdd}
           />
         </Route>
         <Route exact path="/item/:id">
-          <ItemDetail
-          //  itemId={items.map(i=>i.id)} 
-          //  customerId={customers.id}
-          />
+          <ItemDetail />
         </Route>
         <Route exact path="/reviewform">
           <ReviewForm />
@@ -93,7 +97,7 @@ function App() {
           <Signup />
         </Route>
         <Route exact path="/order">
-          <Order />
+          <Order cartItems={cartItems} onAdd={onAdd} />
         </Route>
         <Route exact path="/checkout">
           <Checkout />

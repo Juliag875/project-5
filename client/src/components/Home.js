@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (  
-    <div className="home">
+    <div>
+      <p className="logo">“No elegance is possible without perfume. It is the unseen, unforgettable, ultimate accessory.” – Coco Chanel</p>
       <div className="spring-sale">
         {/* <Popup trigger={<button> Trigger</button>} position="right center">
           <div>Popup content here !!</div>

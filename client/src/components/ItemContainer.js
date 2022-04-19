@@ -3,7 +3,7 @@ import Search from './Search';
 import ItemCard from './ItemCard';
 import {useParams} from 'react-router-dom';
 
-function ItemContainer({items, searchItem, setSearchItem}) {
+function ItemContainer({items, searchItem, setSearchItem, onAdd}) {
 
  const {category} = useParams()
 // category = "spring"
@@ -18,7 +18,7 @@ function ItemContainer({items, searchItem, setSearchItem}) {
     <ItemCard 
       key={item.id}
       item={item}
-      // onAddToCart={addToCart}
+      onAdd={onAdd}
     />
   ))
 

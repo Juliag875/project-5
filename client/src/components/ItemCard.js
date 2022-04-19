@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-function ItemCard({item, onAddToCart}) {
+function ItemCard({item, onAdd}) {
   const { id, brand, title, image, price1, price2, rating} = item
   
   return (
@@ -14,7 +14,7 @@ function ItemCard({item, onAddToCart}) {
         <p><span className="bold">From ${price1}-{price2}</span></p>
         <span>⭐({rating})</span>
       <Link exact to="/order">
-        <button onClick={onAddToCart}>Add To Cart</button>
+        <button onClick={()=>onAdd(item)}>Add To Cart</button>
       </Link>
     </div> 
   )
@@ -22,10 +22,6 @@ function ItemCard({item, onAddToCart}) {
 
 export default ItemCard
  
-/* {badgeText && <div className="card--badge">{badgeText}</div>} */
-/* <img src="../images/star.png" className="card-star" /> */
-/* <span className="gray">({props.item.reviewCount}) • </span>
-<span className="gray">{props.item.location}</span> */
     
   
     
