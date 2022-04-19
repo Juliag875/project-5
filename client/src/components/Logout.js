@@ -13,7 +13,9 @@ function Logout({customer, onLogout}) {
   return (
     <>
     <h2>
-      <Link to="/">Continue Shopping</Link>
+      <Link to="/">
+        <button>Continue Shopping</button>
+      </Link>
     </h2>
     {customer ? (
       <div>
@@ -21,7 +23,7 @@ function Logout({customer, onLogout}) {
         <button onClick={handleLogout}>Logout</button>
       </div>
     ) :(
-      <Link to="/login">Click Here to Login</Link>
+      <Link to="/logout"><button>Logout</button></Link>
     )}
     </>
   );

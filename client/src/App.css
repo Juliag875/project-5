@@ -147,12 +147,28 @@
 /* Card Details Styling */
 .item-details {
   padding-top: 15px;
+  box-sizing: border-box;
 }
 
 .item-details img {
-  /* float: left; */
+  float: left;
+  /* column-count: 2; */
   /* padding-left: 75px; */
   padding-top: 10px;
+}
+
+.left{
+  width: 25%;
+}
+
+.right{
+  width: 45%;
+  padding-left:400px;
+}
+
+.column {
+  float: left;
+  padding: 10px;
 }
 
 /* Comment Form Style */
@@ -192,43 +208,9 @@ button {
   list-style-type: decimal;
 }
 
-.modal {
-  font-size: 12px;
-}
-.modal > .header {
-  width: 100%;
-  border-bottom: 1px solid gray;
-  font-size: 18px;
-  text-align: center;
-  padding: 5px;
-}
-.modal > .content {
-  width: 100%;
-  padding: 10px 5px;
-}
-.modal > .actions {
-  width: 100%;
-  padding: 10px 5px;
-  margin: auto;
-  text-align: center;
-}
-.modal > .close {
-  cursor: pointer;
-  position: absolute;
-  display: block;
-  padding: 2px 5px;
-  line-height: 20px;
-  right: -10px;
-  top: -10px;
-  font-size: 24px;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid #cfcece;
-}
-
 /* animation */
 
-@keyframes anvil {
+/* @keyframes anvil {
   0% {
     transform: scale(1) translateY(0px);
     opacity: 0;
@@ -247,7 +229,7 @@ button {
 }
 .popup-content {
   -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
-}
+} */
 
 /* @keyframes example {
   0%   {background-color: red;}

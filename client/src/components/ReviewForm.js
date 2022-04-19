@@ -41,17 +41,6 @@ function ReviewForm({onAddReview, onSetScore}) {
     setToggle(toggle=>!toggle)
   }
 
-  const ratingOptions = [5,4,3,2,1].map((score, index) => {
-    return (
-    <>
-    <input type="radio" value={score} name="rating" 
-      // checked={score}
-      onChange = {() => console.log('selected:', score)}></input>
-      <label onClick={onSetScore}></label>
-    </>
-  )})
-
-
   return (
     <div className="form-container">
     <form onSubmit={handleSubmit}>

@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Popup from 'reactjs-popup';
+// import Popup from 'reactjs-popup';
 import ReviewForm from './ReviewForm';
 import ReviewCard from './ReviewCard';
 
-function ItemDetail() {
+function ItemDetail({orders, setOrders, addToCart}) {
   const [item, setItem] = useState([]);
   const [reviews, setReviews] = useState([]);
-  const [orders, setOrders] = useState([]);
-  // const [rating, setScore] = useState([]);
+  // const [orders, setOrders] = useState([]);
   const [showDescription, setShowDescription] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [num, setNum] = useState(20);
-  const [score, setScore] = ([]);
   // const [isPending, setIsPending] = useState(false);
   const {id} = useParams();
 
@@ -29,21 +27,21 @@ function ItemDetail() {
         .then(reviews => setReviews(reviews));
   }, []);
 
-  useEffect(() => {
-    fetch("/orders")
-      .then((r) => r.json())
-      .then(order=>setOrders(order));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/orders")
+  //     .then((r) => r.json())
+  //     .then(order=>setOrders(order));
+  // }, []);
 
-  function addToCart(newItem) {
-    setOrders([...orders, newItem])
-  }
+  // function addToCart(newItem) {
+  //   setOrders([...orders, newItem])
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
     const myOrder = {
       item_id: item.id,
-      customer_id: 1,
+      customer_id: 63,
       purchased: true
     }
   
@@ -92,84 +90,57 @@ function ItemDetail() {
     setShowForm(showForm=>!showForm)
   }
 
-  // set score const 
-  const setScoreCount = (score, e) => {
-    e.preventDefault()
-    setScore({...reviews, score})
-  }
-
   return (
-    <div className="item-details">
+    <div className="item-details row popup-content">
         <h4>{item.brand}</h4>
         <h5>{item.title}</h5>
+        
+        <div className="column left">
         <img 
           src={item.image} 
           alt={item.title} 
           height="300px" 
         /> 
-        <br></br>
-        <p><strong>${item.price1}</strong></p>
-        <p>{item.size1}</p>
-        <Popup
-          trigger={<button onClick={handleToggleDescription}> Description </button>}
-          position="bottom center"
-          nested
-         >
-          {close => (
-            <div className="modal">
-              <button className="close" onClick={close}>
-                &times;
-              </button>
-          <br></br>
+        <p>⭐⭐⭐⭐⭐ ({item.rating}) </p>
+          <br></br>  
+       
+        <p>{item.size1} - <strong>${item.price1}</strong></p>
+        <button onClick={handleToggleDescription}> Description </button>
+         <br></br>
           {
-           showDescription ? null : item.description
+           !showDescription ? null : item.description
           }
-        <div>⭐⭐⭐⭐⭐
-          <br></br>
-          ({item.rating})
+        <button onClick={handleSubmit}>Add to Cart</button>
         </div>
+
+        <div className="right">
+        <br></br>
+        {/* <button onClick={handleToggleDescription}> Description </button> */}
         <br></br> 
         <div onClick={handleToggleReviews}>
         <button onClick={showReviewsButton}>Review</button><br></br> 
-         {/* {showReviews ? 
-          <> */}
-           
-          {reviews.slice(num, num + 3).map(review=>(
-            <ReviewCard 
-              key={review.id} 
-              review={review} 
-              onDeleteReview={handleDeleteReview}
-              // onUpdateReview={handleUpdateReview}
-              />))}
-          {/* </>
+         {!showReviews ?  
+         <>
+           {reviews.slice(num, num + 3).map(review=>(
+          <ReviewCard 
+            key={review.id} 
+            review={review} 
+            onDeleteReview={handleDeleteReview}
+            />))}
+        </>
           :
-          null */}
-        
+          null}
       </div>
         <button onClick={showMoreReviews}><small>Show More Reviews</small></button>
         <br></br>
-        <button onClick={handleSubmit}>Add to Cart</button>
-        <br></br>
         <button onClick={handleToggleShowForm}>Add Review</button>
         {showForm ? 
-         <ReviewForm 
-          onAddReview={addReview} 
-          onSetScore={setScoreCount}
+         <ReviewForm onAddReview={addReview} 
           /> 
         : null} 
         </div>
-        )}
-        </Popup>   
-    </div>
+      </div>
   )
 }
 
 export default ItemDetail
-
-// function handleUpdateReview(updatedReview){
-  //   const updatedReviews = reviews.map(review => {
-  //     if(review.id === updatedReview.id) return updatedReview;
-  //     return review;
-  //   })
-  //   setReviews(updatedReviews);
-  // }

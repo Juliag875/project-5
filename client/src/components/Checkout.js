@@ -1,5 +1,6 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
+import { Link } from "react-router-dom";
 
 export default () => (
   <Popup
@@ -12,20 +13,25 @@ export default () => (
         <button className="close" onClick={close}>
           &times;
         </button>
-        <div className="header"> Continue Shopping </div>
+        <Link exact to="/logout">
+          <button>Checkout</button>
+        </Link>
+        <br></br>
+        <Link exact to="/logout">
+          <button className="header"> Continue Shopping </button>
+        </Link>
         <div className="content">
           {' '}
           
         </div>
         <div className="actions">
+       
           <Popup
             trigger={<button className="button"> Checkout </button>}
             position="top center"
             nested
-          >
-            <span>
-              
-            </span>
+          > <Link exact to="/logout">
+          </Link>
           </Popup>
           <button
             className="button"

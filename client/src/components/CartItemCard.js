@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-function OrderCard({order, handleDeleteItemOrder, cartItems, onAdd}) {
+function CartItemCard({brand, order, handleDeleteItemOrder}) {
   const {id} = order
 
   function handleDelete() {
@@ -12,8 +12,8 @@ function OrderCard({order, handleDeleteItemOrder, cartItems, onAdd}) {
 
   return (
     <div className="cards-order">
-      <p>{order.item.brand}</p>
-      <img src={order.item.image} alt={order.item.brand} className="order-image"/>
+      <p>{brand}</p>
+      <img src={order.item.image} alt={brand} className="order-image"/>
       <p>{order.item.price1}</p>
       <button className="card-button fa fa-trash-o"
         style = {{fontSize:"15px", height:"20px", width:"20px"}} 
@@ -30,4 +30,4 @@ function OrderCard({order, handleDeleteItemOrder, cartItems, onAdd}) {
   )
 }
 
-export default OrderCard
+export default CartItemCard;

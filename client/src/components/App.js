@@ -6,7 +6,7 @@ import Navbar from './Navbar';
 import Login from './Login';
 import Logout from './Logout';
 import Signup from './Signup';
-import Order from "./Order";
+import Cart from "./Cart";
 import Checkout from "./Checkout";
 import ItemContainer from './ItemContainer';
 import ItemDetail from './ItemDetail';
@@ -16,9 +16,10 @@ import '../App.css';
 function App() {
   const [items, setItems] = useState([]);
   const [customers, setCustomers] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [searchItem, setSearchItem] = useState("");
   const [currentUser, setCurrentUser] = useState({});
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
   
   // Stay LoggedIn
   useEffect(() => {
@@ -26,6 +27,14 @@ function App() {
       .then((res) => res.json())
       .then((currentUser) => setCurrentUser(currentUser))
   }, []) 
+
+
+  // Fetch Customers
+  useEffect(() => {
+    fetch("/customers")
+      .then((r) => r.json())
+      .then(customers=>setCustomers(customers));
+  }, []);
       
   // Fetch Items
   useEffect(() => {
@@ -34,35 +43,40 @@ function App() {
       .then(items=>setItems(items));
   }, []);
 
-  useEffect(() => {
-    fetch("/orders")
-      .then((r) => r.json())
-      .then(items=>setCartItems(items));
-  }, []);
-
   const searchItems = items.filter((item) => {
     return item.title.toLowerCase().includes(searchItem.toLowerCase())
     || item.brand.toLowerCase().includes(searchItem.toLowerCase());
   });
 
+  // Fetch Orders
   useEffect(() => {
-    fetch("/customers")
+    fetch("/orders")
       .then((r) => r.json())
-      .then(customers=>setCustomers(customers));
+      .then(order=>setOrders(order));
   }, []);
+
+  function handleDeleteItemOrder(deletedItemOrderId) {
+    const deletedItemOrder = orders.filter(order => 
+      order.id !== deletedItemOrderId)
+      setOrders(deletedItemOrder);
+  }
+
+  function addToCart(newItem) {
+    setOrders([...orders, newItem])
+  }
 
 
   // Add item to cart
-  const onAdd = (product) => {
-    const exist = cartItems.find(item => item.id === product.id);
-    if (exist) {
-      setCartItems(cartItems.map(item => 
-        item.id === product.id ? {...exist, qty: exist.qty + 1} : item
-        ));
-      } else {
-        setCartItems([...cartItems, {...product, qty: 1}]);
-      }
-  };
+  // const onAdd = (product) => {
+  //   const exist = orders.find(item => item.id === product.id);
+  //   if (exist) {
+  //     setOrders(orders.map(item => 
+  //       item.id === product.id ? {...exist, qty: exist.qty + 1} : item
+  //       ));
+  //     } else {
+  //       setOrders([...orders, {...product, qty: 1}]);
+  //     }
+  // };
 
   return (
     <div className="App">
@@ -78,11 +92,16 @@ function App() {
             items={searchItems}
             searchItem={searchItem} 
             setSearchItem={setSearchItem}
-            onAdd={onAdd}
+            addToCart={addToCart}
+            // onAdd={onAdd}
           />
         </Route>
         <Route exact path="/item/:id">
-          <ItemDetail />
+          <ItemDetail 
+            orders={orders} 
+            setOrders={setOrders}
+            addToCart={addToCart}
+          />
         </Route>
         <Route exact path="/reviewform">
           <ReviewForm />
@@ -96,8 +115,12 @@ function App() {
         <Route exact path="/signup">
           <Signup />
         </Route>
-        <Route exact path="/order">
-          <Order cartItems={cartItems} onAdd={onAdd} />
+        <Route exact path="/cart">
+          <Cart 
+            orders={orders}
+            setOrder={setOrders} 
+            // onAdd={onAdd} 
+            handleDeleteItemOrder={handleDeleteItemOrder}/>
         </Route>
         <Route exact path="/checkout">
           <Checkout />
