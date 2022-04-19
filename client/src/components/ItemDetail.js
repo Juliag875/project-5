@@ -99,7 +99,7 @@ function ItemDetail({orders, setOrders, addToCart}) {
         <img 
           src={item.image} 
           alt={item.title} 
-          height="300px" 
+          height="350px" 
         /> 
         <p>⭐⭐⭐⭐⭐ ({item.rating}) </p>
           <br></br>  
@@ -110,6 +110,7 @@ function ItemDetail({orders, setOrders, addToCart}) {
           {
            !showDescription ? null : item.description
           }
+          <br></br>
         <button onClick={handleSubmit}>Add to Cart</button>
         </div>
 

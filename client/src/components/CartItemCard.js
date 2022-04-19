@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CartItemCard({brand, order, handleDeleteItemOrder}) {
+function CartItemCard({order, handleDeleteItemOrder}) {
   const {id} = order
 
   function handleDelete() {
@@ -12,8 +12,8 @@ function CartItemCard({brand, order, handleDeleteItemOrder}) {
 
   return (
     <div className="cards-order">
-      <p>{brand}</p>
-      <img src={order.item.image} alt={brand} className="order-image"/>
+      <p>{order.item.brand}</p>
+      <img src={order.item.image} alt={order.item.brand} className="order-image"/>
       <p>{order.item.price1}</p>
       <button className="card-button fa fa-trash-o"
         style = {{fontSize:"15px", height:"20px", width:"20px"}} 

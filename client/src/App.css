@@ -36,7 +36,7 @@
 /* Main Nav */
 .main-nav-container {
   background-color: black;
-  height: 4vh;
+  height: 4.5vh;
 }
 
 /* .main-nav {
@@ -46,22 +46,25 @@
 .nav-li {
   display: inline-block;
   margin: 0px 8px;
-  padding-top: 3.5px;
+  padding-top: 4px;
   text-decoration: none;
   font-size: 1em;
-  /* font-weight: bold; */
   transition: 0.1s;
   color: white;
 }
 
-/* Main Page onload*/
-/* .home {
-  background-color: #f9ebe9;
-} */
+.spring {
+  font-size: 12px;
+  font-family:'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Main Page onload */
 
 .spring-sale {
   /* background: pink; */
   background-image: url("https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80");
+  /* background-image: url("https://www.sephora.com/productimages/product/p437631-av-05-zoom.jpg?imwidth=1500"); */
   /* background-image: url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zmxvd2Vyc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60"); */
   background-position: center;
   /* position: relative; */
@@ -116,6 +119,7 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   padding-top: 10px;
+  text-decoration: none;
 }
 
  .card {
@@ -129,6 +133,7 @@
   flex-direction: row;
   position: relative;
   flex-wrap: wrap;
+  text-decoration: none;
 }
 
 .card-image {

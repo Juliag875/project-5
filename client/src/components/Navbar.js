@@ -6,8 +6,9 @@ function Navbar() {
 
   return (
     <div className="main-nav-container">
-      <NavLink className="nav-li" exact to="/">uCare </NavLink>
-      <NavLink className="nav-li" exact to="/items/spring">| Spring Sale |</NavLink>
+      <NavLink className="nav-li" exact to="/"> uCare </NavLink>
+      <NavLink className="nav-li spring" exact to="/items/spring">Spring Collection</NavLink>
+      <NavLink className="nav-li spring" exact to="/items/new">Gift Sets</NavLink>
       <Link className="nav-li fa fa-user-circle" exact to="/login"></Link>
       <NavLink className="nav-li fa fa-shopping-cart" exact to="/cart"></NavLink>
       {/* <Link className="nav-li" onLogout={handleLogout} exact to="/logout">Logout</Link> */}

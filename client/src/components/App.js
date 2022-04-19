@@ -1,4 +1,5 @@
 import React,  { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import { Switch, Route } from "react-router-dom";
 import Home from './Home';
 import NavbarTop from './NavbarTop';
@@ -15,11 +16,13 @@ import '../App.css';
 
 function App() {
   const [items, setItems] = useState([]);
+  const [item, setItem] = useState([]);
   const [customers, setCustomers] = useState([]);
+  const[customer, setCustomer] =useState([]);
   const [orders, setOrders] = useState([]);
   const [searchItem, setSearchItem] = useState("");
   const [currentUser, setCurrentUser] = useState({});
-  // const [cartItems, setCartItems] = useState([]);
+  const {id} = useParams();
   
   // Stay LoggedIn
   useEffect(() => {
@@ -31,9 +34,9 @@ function App() {
 
   // Fetch Customers
   useEffect(() => {
-    fetch("/customers")
+    fetch(`/customers/${id}`)
       .then((r) => r.json())
-      .then(customers=>setCustomers(customers));
+      .then(customer=>setCustomer(customer));
   }, []);
       
   // Fetch Items
@@ -42,6 +45,12 @@ function App() {
       .then((r) => r.json())
       .then(items=>setItems(items));
   }, []);
+
+  useEffect(() => {
+    fetch(`/items/${id}`)
+        .then(r => r.json())
+        .then(item =>setItem(item))
+      }, [id])
 
   const searchItems = items.filter((item) => {
     return item.title.toLowerCase().includes(searchItem.toLowerCase())
@@ -63,6 +72,25 @@ function App() {
 
   function addToCart(newItem) {
     setOrders([...orders, newItem])
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const myOrder = {
+      item_id: 1,
+      customer_id: 63,
+      purchased: true
+    }
+  
+    fetch('/orders',{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(myOrder)
+   })
+    .then(res=>res.json())
+    .then(data => addToCart(data));
   }
 
 
@@ -92,7 +120,7 @@ function App() {
             items={searchItems}
             searchItem={searchItem} 
             setSearchItem={setSearchItem}
-            addToCart={addToCart}
+            addToCart={handleSubmit}
             // onAdd={onAdd}
           />
         </Route>
@@ -116,11 +144,11 @@ function App() {
           <Signup />
         </Route>
         <Route exact path="/cart">
-          <Cart 
-            orders={orders}
-            setOrder={setOrders} 
-            // onAdd={onAdd} 
-            handleDeleteItemOrder={handleDeleteItemOrder}/>
+          <Cart
+          orders={orders}
+          setOrder={setOrders} 
+          // onAdd={onAdd} 
+          handleDeleteItemOrder={handleDeleteItemOrder}/>
         </Route>
         <Route exact path="/checkout">
           <Checkout />
