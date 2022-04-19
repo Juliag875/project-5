@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2022_04_08_004035) do
     t.string "size1"
     t.string "size2"
     t.integer "rating"
+    t.string "item_category"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

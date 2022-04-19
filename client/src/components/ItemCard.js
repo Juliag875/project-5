@@ -6,7 +6,7 @@ function ItemCard({item, onAddToCart}) {
   
   return (
     <div className="card">
-      <Link to={`/items/${id}`} style={{color:"black"}}>
+      <Link to={`/item/${id}`} style={{color:"black"}}>
         <h3>{brand}</h3>
         <h4>{title}</h4>
       </Link>

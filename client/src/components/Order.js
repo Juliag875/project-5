@@ -11,37 +11,17 @@ function Order() {
       .then(order=>setOrders(order));
   }, []);
 
-  // function addItem(newItem){
-  //   setCartItems([...cartItems, newItem])
-  // }
-
   function handleDeleteItemOrder(deletedItemOrderId) {
     const deletedItemOrder = orders.filter(order => 
       order.id !== deletedItemOrderId)
       setOrders(deletedItemOrder);
   }
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   const myOrder = {
-  //     item_id: 1,
-  //     customer_id: 1,
-  //     purchased: true
-  //   }
-  
-  //   fetch('/orders',{
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(myOrder)
-  //  })
-  //   .then(res=>res.json())
-  //   .then(data => addItem(data));
-  // }
-
-
   return (
+    <>
+    <Link exact to="/checkout">
+       <button>Checkout</button>
+    </Link>
     <div className="cards">
     {orders.map(order => (
       <OrderCard 
@@ -50,11 +30,10 @@ function Order() {
         handleDeleteItemOrder={handleDeleteItemOrder}
       />
     ))}
-    <Link exact to="/checkout">
-      <button>Checkout</button>
-    </Link>
+    
     {/* <div className="fa fa-shopping-cart" ariaHidden="true"></div> */}
     </div>
+    </>
   )
 }
 

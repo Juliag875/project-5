@@ -3,13 +3,11 @@
   padding: 0;
   /* font-family: "Cinzel", serif; */
   text-align: center;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: Arial;
 }
 
-.spring-sale h1, h2 {
-  color: white;
-  text-decoration: none;
-}
+/* 'Source Sans Pro', sans-serif, "Roboto", "system-ui", "San Francisco", "Segoe UI", "Oxygen", "Ubuntu", Arial,  */
+
 
 /* Navbar top*/
 .navbar-top {
@@ -35,23 +33,6 @@
   transition: background-color 1000ms linear;
 }
 
-/* Main Page onload*/
-.spring-sale {
-  /* background-color: pink; */
-  /* background: url("https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"); */
-  background-image: url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zmxvd2Vyc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60");
-  background-position: center;
-  position: relative;
-  color: white;
-  text-align: center;
-  padding-top: 40px;
-  margin-top: 10%;
-  height: 30vh;
-  width: 45%;
-  border-radius: 10px;
-  text-decoration: none;
-}
-
 /* Main Nav */
 .main-nav-container {
   background-color: black;
@@ -71,6 +52,49 @@
   /* font-weight: bold; */
   transition: 0.1s;
   color: white;
+}
+
+/* Main Page onload*/
+/* .home {
+  background-color: #f9ebe9;
+} */
+
+.spring-sale {
+  /* background: pink; */
+  background-image: url("https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zmxvd2Vyc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60"); */
+  background-position: center;
+  /* position: relative; */
+  text-align: center;
+  padding-top: 40px;
+  margin-top: 20%;
+  height: 50vmin;
+  width: 45%;
+  border-radius: 10px;
+  text-decoration: none;
+  float: left;
+}
+
+.spring-sale h1, h2 {
+  color: black;
+  text-decoration: none;
+  text-shadow: 1px 1px 0px white;
+}
+
+.set-sale h1, h2 {
+  color: black;
+  text-decoration: none;
+  text-shadow: 1px 1px 0px white;
+}
+
+.set-sale {
+  background-image: url("https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80");
+  height: 50vmin;
+  width: 45%;
+  float:right;
+  border-radius: 10px;
+  padding-top: 40px;
+  margin-top: 20%;
 }
 
 /* Items Container */
@@ -183,6 +207,7 @@ button {
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
+
 /* animation */
 
 @keyframes anvil {
@@ -206,6 +231,27 @@ button {
   -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }
 
+/* @keyframes example {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+} */
+
+/* Note: When an animation is finished, it goes back to its original style. */
+/* @keyframes example {
+  from {background-color: blue;}
+  to {background-color: yellow;}
+} */
+
+/* The element to apply the animation to */
+/* div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+} */
 
 
 

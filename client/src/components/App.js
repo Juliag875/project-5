@@ -44,6 +44,8 @@ function App() {
       .then(customers=>setCustomers(customers));
   }, []);
 
+  // const getItemId = items.map( i=> key={i.id} id={id})
+
   // Add item to cart
   // function addToCart(product){
   //   const exist = cartItems.find(item => item.id === product.id);
@@ -65,17 +67,17 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/items">
+        <Route exact path="/items/:category">
           <ItemContainer 
             items={searchItems}
             searchItem={searchItem} 
             setSearchItem={setSearchItem}
           />
         </Route>
-        <Route exact path="/items/:id">
+        <Route exact path="/item/:id">
           <ItemDetail
-           itemId={items.id} 
-           customerId={customers.id}
+          //  itemId={items.map(i=>i.id)} 
+          //  customerId={customers.id}
           />
         </Route>
         <Route exact path="/reviewform">

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from "styled-components";
 
 
-function ReviewForm({onAddReview, onSetRating}) {
+function ReviewForm({onAddReview, onSetScore}) {
   const [toggle, setToggle] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
@@ -47,9 +47,9 @@ function ReviewForm({onAddReview, onSetRating}) {
     return (
     <>
     <input type="radio" value={score} name="rating" 
-      checked={score}
+      // checked={score}
       onChange = {() => console.log('selected:', score)}></input>
-      <label onClick={onSetRating}></label>
+      <label onClick={onSetScore}></label>
     </>
   )})
 

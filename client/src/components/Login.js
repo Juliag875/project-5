@@ -21,6 +21,7 @@ function Login({ setCurrentUser }) {
       if (res.ok) {
         res.json().then((user) => setCurrentUser(user));
       }});
+      window.alert("You are Logged In - Enjoy Your Shoppping")
       history.push(`/`)
     }
       // } else {

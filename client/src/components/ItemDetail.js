@@ -4,14 +4,15 @@ import Popup from 'reactjs-popup';
 import ReviewForm from './ReviewForm';
 import ReviewCard from './ReviewCard';
 
-function ItemDetail({itemId, customerId}) {
+function ItemDetail() {
   const [item, setItem] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [orders, setOrders] = useState([]);
+  // const [rating, setScore] = useState([]);
   const [showDescription, setShowDescription] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [num, setNum] = useState(22);
+  const [num, setNum] = useState(20);
   const [score, setScore] = ([]);
   // const [isPending, setIsPending] = useState(false);
   const {id} = useParams();
@@ -34,14 +35,14 @@ function ItemDetail({itemId, customerId}) {
       .then(order=>setOrders(order));
   }, []);
 
-  function addItem(newItem) {
+  function addToCart(newItem) {
     setOrders([...orders, newItem])
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     const myOrder = {
-      item_id: 1,
+      item_id: item.id,
       customer_id: 1,
       purchased: true
     }
@@ -54,7 +55,7 @@ function ItemDetail({itemId, customerId}) {
       body: JSON.stringify(myOrder)
    })
     .then(res=>res.json())
-    .then(data => addItem(data));
+    .then(data => addToCart(data));
   }
 
 
@@ -107,8 +108,8 @@ function ItemDetail({itemId, customerId}) {
           height="300px" 
         /> 
         <br></br>
-        <p><span className="bold">From ${item.price1}-{item.price2}</span></p>
-        <br></br>
+        <p><strong>${item.price1}</strong></p>
+        <p>{item.size1}</p>
         <Popup
           trigger={<button onClick={handleToggleDescription}> Description </button>}
           position="bottom center"
@@ -121,7 +122,7 @@ function ItemDetail({itemId, customerId}) {
               </button>
           <br></br>
           {
-           !showDescription ? null : item.description
+           showDescription ? null : item.description
           }
         <div>⭐⭐⭐⭐⭐
           <br></br>
