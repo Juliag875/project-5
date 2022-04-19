@@ -92,8 +92,8 @@ function ItemDetail({orders, setOrders, addToCart}) {
 
   return (
     <div className="item-details row popup-content">
-        <h4>{item.brand}</h4>
-        <h5>{item.title}</h5>
+        <h3>{item.brand}</h3>
+        <h4>{item.title}</h4>
         
         <div className="column left">
         <img 

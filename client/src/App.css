@@ -208,6 +208,31 @@ button {
   list-style-type: decimal;
 }
 
+/* Checkout */
+.checkout-container {
+  float:left;
+  width: 40%;
+}
+
+.input-text-checkout {
+  height: 4vmin;
+}
+
+.return-policy-text {
+  font-size: small;
+  font-weight: 200;
+  font-style: italic;
+}
+
+
+
+
+
+
+
+
+
+
 /* animation */
 
 /* @keyframes anvil {
