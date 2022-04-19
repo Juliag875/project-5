@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 // import Popup from 'reactjs-popup';
 import { Link } from "react-router-dom";
+import { ElfsightWidget } from 'react-elfsight-widget';
 
 function Checkout() {
   const [formData, setFormData] = useState({
@@ -54,18 +55,22 @@ function Checkout() {
         className="input-text-checkout"
       />
       <br></br>
+      <br></br>
+      <div className="paypal-button">
+        <ElfsightWidget widgetID="373af7ee-f243-462b-9482-551a856743a6"/>
+      </div>
+      <br></br>
       <Link to="/logout">
         <button type="submit">Checkout</button>
       </Link>
     </form>
+  
     <div className="return-policy"><h5>Return Policy</h5></div>
-    <div>
       <p className="return-policy-text">
         We want you to love your purchase, but if you are not completely satisfied, we gladly accept most returns by mail and in stores within 90 days of purchase for free Conditions are noted below. Returned items must be in original, saleable condition with original tags. Shipping and delivery fees are non-refundable.
         Any new or gently used Cosmetic or Fragrance product purchased at uCare's that does not meet your needs will be accepted for return.
         Items purchased in a store must be returned to a store.
-        Items purchased online can be returned by mail or to a store.</p>  
-    </div>  
+        Items purchased online can be returned by mail or to a store.</p>   
   </div>
   )
 }
