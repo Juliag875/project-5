@@ -39,10 +39,6 @@
   height: 4.5vh;
 }
 
-/* .main-nav {
-  display: inline-block;
-} */
-
 .nav-li {
   display: inline-block;
   margin: 0px 8px;
@@ -59,8 +55,13 @@
   letter-spacing: 1px;
 }
 
-/* Main Page onload */
+/* Login */
+.login {
+  margin-top: 40px;
+  font-style: italic;
+}
 
+/* Main Page onload */
 .spring-sale {
   /* background: pink; */
   background-image: url("https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80");
@@ -76,6 +77,8 @@
   border-radius: 10px;
   text-decoration: none;
   float: left;
+  /* filter: blur(.3px);
+  -webkit-filter: blur(.3px); */
 }
 
 .spring-sale h1, h2 {
@@ -114,24 +117,25 @@
 /* Items Container */
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: 3fr;
+  grid-column-gap: 1px;
+  grid-row-gap: 1px;
   padding-top: 10px;
   text-decoration: none;
+  place-items: center;
 }
 
  .card {
   margin: 1rem;
-  /* box-shadow: 4px 4px 6px rgba(74, 183, 255, 0.2); */
+  /* place-items: center; */
   width: 300px;
   width: 175px;
   font-size: 12px;
   flex: 0 0 auto;         
   display: flex;         
   flex-direction: row;
-  position: relative;
+  /* position: relative; */
   flex-wrap: wrap;
   text-decoration: none;
 }
@@ -187,7 +191,7 @@ input, textarea {
   font-family: inherit;
   font-size: 1em;
   transition: all 0.2s;
-  width: 70%;
+  width: 30%;
 }
 
 input:focus {

@@ -29,7 +29,7 @@ function Login({ setCurrentUser }) {
       // }
     
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="login" onSubmit={handleSubmit}>
     <h3>Login With Username</h3>
     <input
       placeholder="username"

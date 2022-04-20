@@ -15,11 +15,15 @@ let totalPrice = itemsPrice + taxPrice + shippingPrice;
 // console.log(totals)
 
 return (
-    <>
     <div>
-      <Link exact to="/checkout">
-         <button>Checkout</button>
-      </Link>
+    <Link exact to="/checkout">
+        <button>Checkout</button>
+    </Link>
+    <div>
+      <h4>Total : ${totalPrice.toFixed(2)}</h4>
+    </div> 
+    <ol>
+    <li>
       {orders.map(order => (
         <CartItemCard 
           key={order.id}
@@ -28,11 +32,9 @@ return (
           // onAdd={onAdd}
         />
       ))}
+      </li></ol>
+
       </div>
-    <div>
-        <p>Items Price : {totalPrice}</p>
-      </div> 
-      </>
     )
   }
 

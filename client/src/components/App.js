@@ -93,7 +93,6 @@ function App() {
     .then(data => addToCart(data));
   }
 
-
   // Add item to cart
   // const onAdd = (product) => {
   //   const exist = orders.find(item => item.id === product.id);
