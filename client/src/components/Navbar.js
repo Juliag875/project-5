@@ -2,10 +2,11 @@ import React from 'react';
 // import styled from "styled-components";
 import { NavLink, Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({currentUser}) {
 
   return (
     <div className="main-nav-container">
+      {/* <p>{currentUser}</p> */}
       <NavLink className="nav-li" exact to="/"> uCare </NavLink>
       <NavLink className="nav-li spring" exact to="/items/spring">Spring Collection</NavLink>
       <NavLink className="nav-li spring" exact to="/items/new">Gift Sets</NavLink>

@@ -17,7 +17,6 @@ import '../App.css';
 function App() {
   const [items, setItems] = useState([]);
   const [item, setItem] = useState([]);
-  const [customers, setCustomers] = useState([]);
   const[customer, setCustomer] =useState([]);
   const [orders, setOrders] = useState([]);
   const [searchItem, setSearchItem] = useState("");
@@ -30,7 +29,6 @@ function App() {
       .then((res) => res.json())
       .then((currentUser) => setCurrentUser(currentUser))
   }, []) 
-
 
   // Fetch Customers
   useEffect(() => {
@@ -108,7 +106,7 @@ function App() {
   return (
     <div className="App">
       <NavbarTop />
-      <Navbar />
+      <Navbar currentUser={currentUser} />
 
       <Switch>
         <Route exact path="/">

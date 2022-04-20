@@ -117,18 +117,17 @@
 /* Items Container */
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: 3fr;
-  grid-column-gap: 1px;
-  grid-row-gap: 1px;
-  padding-top: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding-top: 5px;
   text-decoration: none;
   place-items: center;
 }
 
  .card {
   margin: 1rem;
-  /* place-items: center; */
   width: 300px;
   width: 175px;
   font-size: 12px;
@@ -211,11 +210,21 @@ button {
 }
 
 /* Order Style */
+.cards-order {
+    margin: 1rem;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    border: 1px #ccc;
+    width: 300px;
+  } 
+  
 .order-image {
-  width: 10vmin;
-  height: 10vmin;
-  list-style-type: decimal;
-}
+    height: 20vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
 
 /* Checkout */
 .checkout-container {
