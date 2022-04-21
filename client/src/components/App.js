@@ -1,5 +1,5 @@
 import React,  { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Switch, Route } from "react-router-dom";
 import Home from './Home';
 import NavbarTop from './NavbarTop';
@@ -22,6 +22,7 @@ function App() {
   const [searchItem, setSearchItem] = useState("");
   const [currentUser, setCurrentUser] = useState({});
   const {id} = useParams();
+  const history = useHistory();
   
   // Stay LoggedIn
   useEffect(() => {
@@ -89,6 +90,7 @@ function App() {
    })
     .then(res=>res.json())
     .then(data => addToCart(data));
+    history.push(`/cart`)
   }
 
   // Add item to cart
@@ -142,10 +144,9 @@ function App() {
         </Route>
         <Route exact path="/cart">
           <Cart
-          orders={orders}
-          setOrder={setOrders} 
-          // onAdd={onAdd} 
-          handleDeleteItemOrder={handleDeleteItemOrder}/>
+            orders={orders}
+            setOrder={setOrders} 
+            handleDeleteItemOrder={handleDeleteItemOrder}/>
         </Route>
         <Route exact path="/checkout">
           <Checkout />

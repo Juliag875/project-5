@@ -71,7 +71,7 @@
   /* position: relative; */
   text-align: center;
   padding-top: 40px;
-  margin-top: 10%;
+  margin-top: 7%;
   height: 50vmin;
   width: 45%;
   border-radius: 10px;
@@ -102,15 +102,17 @@
   float:right;
   border-radius: 10px;
   padding-top: 40px;
-  margin-top: 10%;
+  margin-top: 7%;
 }
 
 /* Logo quote style */
 .logo {
   text-indent: 37%;
-  letter-spacing: 1px;
-  margin-top: 10%;
-  font-family: "Edwardian Script";
+  letter-spacing: 1.3px;
+  margin-top: 4.5%;
+  font-size: 25px;
+  font-family: 'Ms Madi';
+  font-weight: 500;
   font-style: oblique;
 }
 
@@ -128,8 +130,8 @@
 
  .card {
   margin: 1rem;
-  width: 300px;
-  width: 175px;
+  width: 250px;
+  /* width: 175px; */
   font-size: 12px;
   flex: 0 0 auto;         
   display: flex;         
@@ -212,7 +214,7 @@ button {
 /* Order Style */
 .cards-order {
     margin: 1rem;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 10px rgba(154, 151, 151, 0.2);
     border-radius: 3px;
     border: 1px #ccc;
     width: 300px;

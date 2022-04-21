@@ -14,6 +14,7 @@ let shippingPrice = itemsPrice > 200 ? 0 : 20;
 let totalPrice = itemsPrice + taxPrice + shippingPrice;
 // console.log(totals)
 
+// if (!currentUser) return <Login onLogin={setCurrentUser} />;
 return (
     <div className="order-list">
     <Link exact to="/checkout">

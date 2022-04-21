@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-// import Button from './Button'
+import {useHistory} from 'react-router-dom';
 
 function Logout({customer, onLogout}) {
+  const history = useHistory();
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE" 
-    }).then(() => onLogout());
+    }).then(() => onLogout);
+    window.alert("Thank You for Shopping with Us!")
+    history.push(`/`)
   }
-  // if (!customer) return <Login onLogin={setCustomer} />;
 
   return (
     <>
@@ -17,14 +19,15 @@ function Logout({customer, onLogout}) {
         <button>Continue Shopping</button>
       </Link>
     </h2>
-    {customer ? (
+    <button onClick={handleLogout}>Logout</button>
+    {/* {customer ? (
       <div>
         <p>Welcome, {customer.username}!</p>
         <button onClick={handleLogout}>Logout</button>
       </div>
     ) :(
-      <Link to="/logout"><button>Logout</button></Link>
-    )}
+      <button onClick={handleLogout}>Logout</button>
+    )} */}
     </>
   );
 }

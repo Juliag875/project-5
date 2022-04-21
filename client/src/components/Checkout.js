@@ -46,6 +46,7 @@ function Checkout() {
         placeholder="Email..."
         className="input-text-checkout"
       />  
+      <br></br>
       <input
         type="text"
         name="address"

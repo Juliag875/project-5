@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     customer = Customer.find_by(username: params[:username])
     if customer&.authenticate(params[:password])
       session[:customer_id] = customer.id
-      rnder json: customer, status: :created
+      render json: customer, status: :created
     else
       render json: { errors: ["Invalid username or password"] }, status: :unauthorized
       # flash.now[:alert] = "Username or password is invalid"
