@@ -149,7 +149,7 @@ function App() {
             handleDeleteItemOrder={handleDeleteItemOrder}/>
         </Route>
         <Route exact path="/checkout">
-          <Checkout />
+          <Checkout currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         </Route>
         <Route path="*">
           <h1>404 not found</h1>

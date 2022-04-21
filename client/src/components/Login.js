@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function Login({ setCurrentUser }) {
   const [username, setUsername] = useState("");
@@ -30,7 +31,10 @@ function Login({ setCurrentUser }) {
     
   return (
     <form className="login" onSubmit={handleSubmit}>
-    <h3>Login With Username</h3>
+    <h1>Log In</h1>
+    {/* <h3>Login With Username</h3> */}
+    {/* <label htmlFor="username">Username:</label> */}
+    <br></br>
     <input
       placeholder="username"
       type="text"
@@ -54,6 +58,10 @@ function Login({ setCurrentUser }) {
     {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))} */}
+        <br></br>
+    <Link to={"/signup"}>
+      <button>SignUp</button>
+    </Link>
   </form>
 );
 }

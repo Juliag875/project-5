@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 // import Popup from 'reactjs-popup';
 import { Link } from "react-router-dom";
 import { ElfsightWidget } from 'react-elfsight-widget';
+import Login from './Login';
 
-function Checkout() {
+function Checkout({currentUser, setCurrentUser}) {
   const [formData, setFormData] = useState({
     name: "",
     lastname: "",
@@ -11,6 +12,8 @@ function Checkout() {
     address: "",
   });
 
+  if (!currentUser) return <Login onLogin={setCurrentUser} />;
+  
   function handleChange(event) {
     setFormData({
       ...formData,

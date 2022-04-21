@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController 
-  # before_action :authorize, only: [:index, :create]
+  before_action :authorize, only: [:index, :create]
 
   # GET
   def index

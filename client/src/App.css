@@ -39,6 +39,16 @@
   height: 4.5vh;
 }
 
+.nav-li:hover,
+button:hover,
+div.main-nav-container:hover {
+  background-color: blue;
+  color: yellow;
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
+}
+
 .nav-li {
   display: inline-block;
   margin: 0px 8px;
@@ -57,8 +67,29 @@
 
 /* Login */
 .login {
-  margin-top: 40px;
-  font-style: italic;
+  margin-top: 50px;
+  font-weight: 600;
+  font-size: larger;
+  /* font-style: oblique; */
+  /* font-style: italic; */
+}
+
+.login-span {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* SignUp */
+.signup-form {
+  margin-top: 4%;
+}
+
+label,
+.member {
+  font-weight: bold;
+  font-weight: 500;
+  font-style: oblique;
 }
 
 /* Main Page onload */
@@ -108,10 +139,12 @@
 /* Logo quote style */
 .logo {
   text-indent: 37%;
-  letter-spacing: 1.3px;
+  letter-spacing: 1px;
   margin-top: 4.5%;
-  font-size: 25px;
-  font-family: 'Ms Madi';
+  font-size: 20px;
+  /* letter-spacing: 1.3px; */
+  /* font-size: 25px; */
+  /* font-family: 'Ms Madi'; */
   font-weight: 500;
   font-style: oblique;
 }
