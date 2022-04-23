@@ -50,7 +50,7 @@ function ReviewForm({onAddReview, onSetScore}) {
         onChange={handleChange}
         value={formData.name}
         placeholder="Name..."
-        className="input-text"
+        className="input-text-form"
       /><br></br>
       <input
         type="text"
@@ -58,7 +58,7 @@ function ReviewForm({onAddReview, onSetScore}) {
         onChange={handleChange}
         value={formData.title}
         placeholder="Title..."
-        className="input-text"
+        className="input-text-form"
       />  
       <br></br>
       <textarea
@@ -67,7 +67,7 @@ function ReviewForm({onAddReview, onSetScore}) {
         onChange={handleChange}
         value={formData.content}
         placeholder="Your comment..."
-        className="input-text"
+        className="input-text-form"
       />
       
       <br></br>

@@ -51,10 +51,11 @@ div.main-nav-container:hover {
 
 .nav-li {
   display: inline-block;
+  font-weight: bold;
   margin: 0px 8px;
   padding-top: 4px;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 1.1em;
   transition: 0.1s;
   color: white;
 }
@@ -226,6 +227,10 @@ input, textarea {
   font-size: 1em;
   transition: all 0.2s;
   width: 30%;
+}
+
+.input-text-form{
+  width: 70%;
 }
 
 input:focus {

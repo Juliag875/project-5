@@ -101,7 +101,7 @@ function ItemDetail({orders, setOrders, addToCart}) {
           alt={item.title} 
           height="350px" 
         /> 
-        <p>⭐⭐⭐⭐⭐ ({item.rating}) </p>
+        <p className="rating">⭐⭐⭐⭐⭐ ({item.rating}) </p>
           <br></br>  
        
         <p>{item.size1} - <strong>${item.price1}</strong></p>
