@@ -9,6 +9,7 @@ function Cart({orders, setOrders, onAdd, handleDeleteItemOrder}) {
 let itemsPrice = orders
   .map(order=>parseInt(order.item.price1))
   .reduce((acc, order) => acc + order, 0);
+  
 let taxPrice = itemsPrice * 0.0875;
 let shippingPrice = itemsPrice > 200 ? 0 : 20;
 let totalPrice = itemsPrice + taxPrice + shippingPrice;

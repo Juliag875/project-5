@@ -52,3 +52,9 @@ gem "active_model_serializers", "~> 0.10.12"
 
 # gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'faker', "~> 2.20.0"
+
+# Datadog trace
+# Gemfile
+gem 'ddtrace', require: 'ddtrace/auto_instrument'
+
+gem 'google-protobuf', '~> 3.0.0.alpha.2.0'
