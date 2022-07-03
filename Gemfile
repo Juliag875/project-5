@@ -55,6 +55,12 @@ gem 'faker', "~> 2.20.0"
 
 # Datadog trace
 # Gemfile
-gem 'ddtrace', require: 'ddtrace/auto_instrument'
+# gem 'ddtrace', require: 'ddtrace/auto_instrument'
 
-gem 'google-protobuf', '~> 3.0.0.alpha.2.0'
+gem 'ddtrace', '~> 1.0'
+
+gem 'google-protobuf', '~> 3.0'
+
+gem 'lograge'
+
+gem "logstash-event"

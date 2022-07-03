@@ -77,19 +77,23 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  # Use a different logger for distributed setups.
-  # require "syslog/logger"
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+ # Lograge config
+config.lograge.enabled = true
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
-  end
+# This specifies to log in JSON format
+config.lograge.formatter = Lograge::Formatters::Json.new
 
-  # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
+## Disables log coloration
+config.colorize_logging = false
 
+# Log to a dedicated file
+config.lograge.logger = ActiveSupport::Logger.new(File.join(Rails.root, 'log', "#{Rails.env}.log"))
+
+# This is useful if you want to log query parameters
+config.lograge.custom_options = lambda do |event|
+    { :ddsource => 'ruby',
+      :params => event.payload[:params].reject { |k| %w(controller action).include? k }
+    }
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write

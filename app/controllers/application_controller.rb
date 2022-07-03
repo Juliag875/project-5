@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
   end
 
   def handle_invalid_record(exception)
-    render json: { error: "Bird not found" }, status: :unprocessable_entity
+    render json: { error: "Item not found" }, status: :unprocessable_entity
   end
 
   end

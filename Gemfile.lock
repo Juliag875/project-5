@@ -100,6 +100,12 @@ GEM
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    lograge (0.12.0)
+      actionpack (>= 4)
+      activesupport (>= 4)
+      railties (>= 4)
+      request_store (~> 1.0)
+    logstash-event (1.2.02)
     loofah (2.16.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -154,6 +160,8 @@ GEM
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    request_store (1.5.1)
+      rack (>= 1.4)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
     rspec-expectations (3.11.0)
@@ -199,10 +207,12 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
-  ddtrace
+  ddtrace (~> 1.0)
   faker (~> 2.20.0)
-  google-protobuf (~> 3.0.0.alpha.2.0)
+  google-protobuf (~> 3.0)
   listen (~> 3.3)
+  lograge
+  logstash-event
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 6.1.3, >= 6.1.3.2)
